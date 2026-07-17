@@ -14,15 +14,12 @@
     apiBase: stored || 'http://localhost:4000/api',
 
     // Organisation contact
-    email: 'info@climatecardinalsknust.org',
+    email: 'climatecardinalsknust@gmail.com',
 
     // Social media handles — update these to the chapter's real accounts.
     social: [
-      { name: 'Instagram', icon: 'photo_camera', url: 'https://instagram.com/climatecardinalsknust' },
-      { name: 'X (Twitter)', icon: 'tag', url: 'https://x.com/climatecardinal' },
-      { name: 'LinkedIn', icon: 'work', url: 'https://www.linkedin.com/company/climate-cardinals' },
-      { name: 'Facebook', icon: 'thumb_up', url: 'https://facebook.com/climatecardinals' },
-      { name: 'Email', icon: 'mail', url: 'mailto:info@climatecardinalsknust.org' },
+      { name: 'Instagram', icon: 'photo_camera', url: 'https://instagram.com/climatecardinals_knust' },
+      { name: 'Email', icon: 'mail', url: 'mailto:climatecardinalsknust@gmail.com' },
     ],
   };
 })();
