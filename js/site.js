@@ -8,25 +8,14 @@
 
   function toast(message, type) {
     var el = document.createElement('div');
-    var bg = type === 'error' ? '#ba1a1a' : '#17501a';
+    el.className = 'cc-toast' + (type === 'error' ? ' cc-toast--error' : '');
     el.textContent = message;
     el.setAttribute('role', 'status');
-    el.style.cssText =
-      'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
-      'background:' + bg + ';color:#fff;padding:12px 20px;border-radius:9999px;' +
-      'font-family:Atkinson Hyperlegible Next,sans-serif;font-size:15px;' +
-      'box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:9999;opacity:0;' +
-      'transition:opacity .25s,transform .25s;max-width:90vw;text-align:center;';
     document.body.appendChild(el);
-    requestAnimationFrame(function () {
-      el.style.opacity = '1';
-    });
+    requestAnimationFrame(function () { el.classList.add('show'); });
     setTimeout(function () {
-      el.style.opacity = '0';
-      el.style.transform = 'translateX(-50%) translateY(8px)';
-      setTimeout(function () {
-        el.remove();
-      }, 300);
+      el.classList.remove('show');
+      setTimeout(function () { el.remove(); }, 300);
     }, 3200);
   }
 

@@ -1,251 +1,87 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
+<html lang="en" data-year="2024">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Merch Store | Climate Cardinals KNUST</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "tertiary": "#0b3e50",
-                    "primary": "#154212",
-                    "on-tertiary": "#ffffff",
-                    "secondary-container": "#acf847",
-                    "surface-container-lowest": "#ffffff",
-                    "on-primary": "#ffffff",
-                    "secondary-fixed": "#acf847",
-                    "tertiary-fixed": "#bee9ff",
-                    "on-primary-container": "#9dd090",
-                    "surface-container-low": "#fff1eb",
-                    "inverse-on-surface": "#ffede6",
-                    "surface-container-high": "#ffe2d7",
-                    "inverse-surface": "#51230a",
-                    "on-surface": "#351000",
-                    "surface-tint": "#3b6934",
-                    "tertiary-container": "#295568",
-                    "primary-container": "#2d5a27",
-                    "outline-variant": "#c2c9bb",
-                    "error": "#ba1a1a",
-                    "on-error-container": "#93000a",
-                    "primary-fixed": "#bcf0ae",
-                    "on-secondary": "#ffffff",
-                    "on-surface-variant": "#42493e",
-                    "surface-bright": "#fff8f6",
-                    "background": "#fff8f6",
-                    "surface-container": "#ffeae1",
-                    "on-background": "#351000",
-                    "surface-variant": "#ffdbcc",
-                    "on-tertiary-fixed": "#001f2a",
-                    "outline": "#72796e",
-                    "surface-container-highest": "#ffdbcc",
-                    "on-tertiary-container": "#9dc9df",
-                    "on-secondary-fixed": "#102000",
-                    "on-primary-fixed": "#002201",
-                    "surface": "#fff8f6",
-                    "on-primary-fixed-variant": "#23501e",
-                    "inverse-primary": "#a1d494",
-                    "error-container": "#ffdad6",
-                    "on-secondary-container": "#457000",
-                    "on-tertiary-fixed-variant": "#1e4c5f",
-                    "primary-fixed-dim": "#a1d494",
-                    "on-error": "#ffffff",
-                    "tertiary-fixed-dim": "#a1cde3",
-                    "surface-dim": "#ffd0bc",
-                    "secondary-fixed-dim": "#91db2a",
-                    "secondary": "#416900",
-                    "on-secondary-fixed-variant": "#304f00"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "sm": "12px",
-                    "md": "24px",
-                    "container-max": "1280px",
-                    "gutter": "24px",
-                    "xs": "4px",
-                    "xl": "80px",
-                    "base": "8px",
-                    "lg": "48px"
-            },
-            "fontFamily": {
-                    "label-caps": ["Plus Jakarta Sans"],
-                    "display-lg-mobile": ["Plus Jakarta Sans"],
-                    "body-md": ["Atkinson Hyperlegible Next"],
-                    "body-lg": ["Atkinson Hyperlegible Next"],
-                    "headline-md": ["Plus Jakarta Sans"],
-                    "display-lg": ["Plus Jakarta Sans"]
-            },
-            "fontSize": {
-                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
-            }
-          },
-        },
-      }
-    </script>
-<script>
-    // Cart management now lives in js/api.js + js/shop.js (loaded at page end).
-    function goToCart() {
-        window.location.href = 'cart.html';
-    }
-</script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-        .organic-shape {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        }
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
-        }
-        .glass-card {
-            background: rgba(255, 248, 246, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(69, 26, 3, 0.1);
-        }
-    </style>
+<meta name="description" content="Sustainable merch that funds climate education and tree-planting in Kumasi."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
-<body class="bg-background text-on-surface font-body-md min-h-screen">
-<!-- Top Navigation Bar -->
-<header class="bg-surface sticky top-0 z-50 border-b border-on-surface/10">
-<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
-<div class="font-headline-md text-headline-md font-bold text-primary">
-<a href="main.html">Climate Cardinals KNUST</a>
-</div>
-<nav class="hidden md:flex items-center space-x-md">
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="main.html#about">About</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="main.html#team">Team</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="impact.html">Impact</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="main.html#merch">Merch</a>
-</nav>
-<div class="flex items-center gap-md">
-<div class="relative hidden sm:block">
-<input id="shop-search" class="bg-surface-container-low border-outline/20 rounded-full px-md py-2 text-body-md w-64 focus:ring-2 focus:ring-tertiary-fixed outline-none" placeholder="Search merch..." type="text"/>
-<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-</div>
-<button class="text-primary hover:scale-95 transition-transform duration-150">
-<span class="material-symbols-outlined text-3xl">account_circle</span>
-</button>
-<button onclick="goToCart()" class="relative text-primary hover:scale-95 transition-transform duration-150">
-<span class="material-symbols-outlined text-3xl">shopping_bag</span>
-<span id="cart-badge" class="absolute -top-1 -right-1 bg-secondary text-on-secondary text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold" style="display: none;">0</span>
-</button>
-</div>
-</div>
-</header>
-<main class="max-w-container-max mx-auto px-gutter py-lg">
-<!-- Hero Store Section -->
-<section class="relative mb-xl overflow-hidden rounded-[32px] bg-primary text-on-primary p-lg">
-<div class="relative z-10 max-w-2xl">
-<span class="font-label-caps text-label-caps text-secondary-container mb-sm inline-block">SUSTAINABLE SWAG</span>
-<h1 class="font-display-lg text-display-lg mb-md leading-tight">Wear the Change You Want to See.</h1>
-<p class="font-body-lg text-body-lg opacity-90 mb-lg">Support our climate education initiatives in Kumasi. 100% of proceeds fund local environmental workshops and tree-planting events.</p>
-<div class="flex gap-md">
-<a href="cart.html" class="bg-secondary-container text-on-secondary-fixed px-lg py-md rounded-full font-bold hover:brightness-110 transition-all flex items-center gap-2">
-Shop Best Sellers <span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Decorative Organic Shape -->
-<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-secondary/20 organic-shape blur-3xl"></div>
-<div class="absolute right-10 top-10 w-64 h-64 bg-tertiary-container/30 organic-shape blur-2xl"></div>
-</section>
-<!-- Categories Bar -->
-<section class="mb-lg overflow-x-auto">
-<div class="flex gap-md pb-4 min-w-max">
-<button data-category="" class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold flex items-center gap-2">
-<span class="material-symbols-outlined" data-weight="fill">grid_view</span> All Items
-</button>
-<button data-category="APPAREL" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined">checkroom</span> Apparel
-</button>
-<button data-category="STICKERS" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined">eco</span> Stickers
-</button>
-<button data-category="ACCESSORIES" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined">local_mall</span> Accessories
-</button>
-<button data-category="DRINKWARE" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined">local_cafe</span> Drinkware
-</button>
-</div>
-</section>
-<!-- Product Grid -->
-<section id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
-<p class="col-span-full text-center text-on-surface-variant py-12">Loading products…</p>
-</section>
-<!-- Featured Section: Bento Layout -->
-<section class="mt-xl">
-<h2 class="font-display-lg text-headline-md mb-lg">Impact Stories</h2>
-<div class="bento-grid">
-<!-- Large card -->
-<div class="col-span-12 md:col-span-8 glass-card p-md rounded-[32px] flex flex-col md:flex-row gap-md items-center">
-<div class="w-full md:w-1/2 aspect-video rounded-[24px] overflow-hidden">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkWtXM_MtvfH_RS6PKsBL237I1muzni_0CytTSlhyqJvM2Yl9lCekiteL-7gU0YRImFG5-z9YmZWsUmJo2ryd69rHYPYYt6rrQArjaHcqSjAdAGgzBuPFhWqzT7vNtfJkvDn6YsQCLRcze8zOT77xDnjuiuiPjetGAouIWbDZ6v8Sla07mjA31I9_MWt0a18P82z1ymurE5ZPyK9GFd3VNdJO9Y6y9E2N16cMNss79eqQT0Oi-kDzlwRIQ0HmrkPdTrmVt0yIg-tI1"/>
-</div>
-<div class="w-full md:w-1/2">
-<span class="font-label-caps text-label-caps text-secondary mb-2 block">WHERE YOUR MONEY GOES</span>
-<h3 class="font-headline-md mb-sm">The 1000-Tree Initiative</h3>
-<p class="text-on-surface-variant mb-md">Every 5 shirts sold funds the planting and maintenance of one native shade tree on the KNUST campus and surrounding Kumasi communities.</p>
-<a class="text-primary font-bold flex items-center gap-1 hover:underline" href="impact.html">Read the report <span class="material-symbols-outlined">arrow_right_alt</span></a>
-</div>
-</div>
-<!-- Small card -->
-<div class="col-span-12 md:col-span-4 bg-tertiary text-on-tertiary p-md rounded-[32px] flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined text-4xl mb-md">recycling</span>
-<h3 class="font-headline-md mb-sm">Circular Packaging</h3>
-</div>
-<p class="opacity-80">All merch is shipped in 100% compostable mailers with seed-paper thank you notes that you can plant!</p>
-</div>
-</div>
-</section>
+<body>
+<main>
+
+  <!-- Hero -->
+  <section class="cc-hero">
+    <div class="cc-hero__blob cc-hero__blob--1"></div>
+    <div class="cc-container cc-hero__inner">
+      <div>
+        <span class="cc-eyebrow cc-eyebrow--light">Sustainable swag</span>
+        <h1>Wear the change you want to see.</h1>
+        <p>Every purchase funds local climate education and tree-planting in Kumasi. 100% of proceeds go straight to the mission — shipped in compostable, plantable packaging.</p>
+        <div class="cc-hero__cta">
+          <a href="#shop" class="cc-btn cc-btn--accent cc-btn--lg">Shop best sellers</a>
+          <a href="cart.html" class="cc-btn cc-btn--light cc-btn--lg">View cart</a>
+        </div>
+      </div>
+      <div class="cc-hero__art">
+        <svg viewBox="0 0 400 400" width="100%" height="100%" role="img" aria-label="A tote bag with a leaf" preserveAspectRatio="xMidYMid slice">
+          <rect width="400" height="400" fill="#e9f3d3"/>
+          <circle cx="200" cy="210" r="140" fill="#84cc16" opacity="0.25"/>
+          <path d="M130 150 h140 v170 a10 10 0 0 1 -10 10 h-120 a10 10 0 0 1 -10 -10 z" fill="#fff" stroke="#14532d" stroke-width="6"/>
+          <path d="M160 150 a40 40 0 0 1 80 0" fill="none" stroke="#14532d" stroke-width="6"/>
+          <path d="M200 290 C 170 282 160 254 184 238 C 194 256 198 272 200 290 Z" fill="#2f8a45"/>
+          <path d="M200 278 C 230 270 242 240 218 224 C 206 244 202 260 200 278 Z" fill="#4d7c4d"/>
+          <path d="M200 290 V236" stroke="#14532d" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section class="cc-section" id="shop">
+    <div class="cc-container">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:26px">
+        <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:6px">
+          <button class="cc-chip is-active" data-category="">All items</button>
+          <button class="cc-chip" data-category="APPAREL">Apparel</button>
+          <button class="cc-chip" data-category="STICKERS">Stickers</button>
+          <button class="cc-chip" data-category="ACCESSORIES">Accessories</button>
+          <button class="cc-chip" data-category="DRINKWARE">Drinkware</button>
+        </div>
+        <div style="position:relative;min-width:220px">
+          <input id="shop-search" class="cc-input" type="search" placeholder="Search merch…" style="padding-right:40px" aria-label="Search merch"/>
+          <span data-ico="search" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--ink-faint)"></span>
+        </div>
+      </div>
+      <div class="cc-grid cc-grid--4" id="product-grid">
+        <div class="cc-loading">Loading products…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact note -->
+  <section class="cc-section cc-bg-alt cc-section--tight">
+    <div class="cc-container">
+      <div class="cc-grid cc-grid--3">
+        <div class="cc-card cc-feature"><div class="cc-feature__icon" data-ico="tree"></div>
+          <h3 class="cc-h3">1000-Tree Initiative</h3><p>Every 5 shirts sold funds one native shade tree planted and maintained on campus and around Kumasi.</p></div>
+        <div class="cc-card cc-feature"><div class="cc-feature__icon" data-ico="recycle"></div>
+          <h3 class="cc-h3">Circular Packaging</h3><p>Shipped in 100% compostable mailers with seed-paper thank-you notes you can actually plant.</p></div>
+        <div class="cc-card cc-feature"><div class="cc-feature__icon" data-ico="handHeart"></div>
+          <h3 class="cc-h3">100% to the Mission</h3><p>Proceeds fund translation drives, workshops and reforestation across the Ashanti region.</p></div>
+      </div>
+    </div>
+  </section>
+
 </main>
-<!-- Footer -->
-<footer class="bg-surface-container-low mt-xl border-t border-on-surface/5">
-<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-md w-full max-w-container-max mx-auto gap-md">
-<div class="flex flex-col gap-2 text-center md:text-left">
-<div class="font-label-caps text-label-caps tracking-widest text-secondary">CLIMATE CARDINALS KNUST</div>
-<div class="text-on-surface-variant text-sm">© 2024 Climate Cardinals KNUST. All rights reserved.</div>
-</div>
-<div class="flex flex-wrap justify-center gap-md">
-<a class="text-on-surface-variant hover:underline transition-all font-body-md text-body-md" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:underline transition-all font-body-md text-body-md" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:underline transition-all font-body-md text-body-md" href="#">Contact Us</a>
-<a class="text-on-surface-variant hover:underline transition-all font-body-md text-body-md" href="#">Global Network</a>
-</div>
-<div class="flex gap-md">
-<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-secondary-container transition-colors">
-<span class="material-symbols-outlined text-primary">share</span>
-</button>
-<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-secondary-container transition-colors">
-<span class="material-symbols-outlined text-primary">mail</span>
-</button>
-</div>
-</div>
-</footer>
+
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/site.js"></script>
 <script src="js/shop.js"></script>
 <script src="js/chrome.js"></script>
-</body></html>
+</body>
+</html>

@@ -1,678 +1,163 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en"><head>
+<html lang="en" data-year="2024">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Climate Cardinals KNUST | Nature-Centric Climate Action</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        
-        /* Organic Shape Masks */
-        .blob-shape {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        }
-        
-        .leaf-shape {
-            border-radius: 0 100% 0 100% / 0 100% 0 100%;
-        }
-        
-        .pebble-shape {
-            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-        }
-        
-        .pebble-shape-alt {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        }
-
-        /* Biophilic Transitions */
-        .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-8px);
-        }
-        
-        /* Card animation on scroll */
-        .group, .bg-white\/50 {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Custom Scrollbar for Earthy Feel */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fff8f6;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c2c9bb;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #154212;
-        }
-    </style>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "secondary": "#416900",
-                      "surface-container-highest": "#ffdbcc",
-                      "surface-container-high": "#ffe2d7",
-                      "inverse-surface": "#51230a",
-                      "inverse-on-surface": "#ffede6",
-                      "on-primary-fixed": "#002201",
-                      "on-surface": "#351000",
-                      "primary": "#154212",
-                      "on-secondary-fixed": "#102000",
-                      "on-error-container": "#93000a",
-                      "primary-fixed": "#bcf0ae",
-                      "on-surface-variant": "#42493e",
-                      "primary-fixed-dim": "#a1d494",
-                      "tertiary-container": "#295568",
-                      "on-error": "#ffffff",
-                      "on-secondary-container": "#457000",
-                      "tertiary-fixed": "#bee9ff",
-                      "on-secondary-fixed-variant": "#304f00",
-                      "surface-bright": "#fff8f6",
-                      "surface-variant": "#ffdbcc",
-                      "on-secondary": "#ffffff",
-                      "background": "#fff8f6",
-                      "outline-variant": "#c2c9bb",
-                      "outline": "#72796e",
-                      "error-container": "#ffdad6",
-                      "secondary-fixed-dim": "#91db2a",
-                      "surface-tint": "#3b6934",
-                      "inverse-primary": "#a1d494",
-                      "tertiary": "#0b3e50",
-                      "secondary-fixed": "#acf847",
-                      "tertiary-fixed-dim": "#a1cde3",
-                      "surface-container": "#ffeae1",
-                      "on-tertiary-container": "#9dc9df",
-                      "on-primary-container": "#9dd090",
-                      "error": "#ba1a1a",
-                      "on-tertiary-fixed": "#001f2a",
-                      "surface-container-low": "#fff1eb",
-                      "on-primary-fixed-variant": "#23501e",
-                      "surface-dim": "#ffd0bc",
-                      "on-background": "#351000",
-                      "secondary-container": "#acf847",
-                      "surface": "#fff8f6",
-                      "on-tertiary": "#ffffff",
-                      "on-primary": "#ffffff",
-                      "on-tertiary-fixed-variant": "#1e4c5f",
-                      "primary-container": "#2d5a27",
-                      "surface-container-lowest": "#ffffff"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "lg": "48px",
-                      "container-max": "1280px",
-                      "xs": "4px",
-                      "base": "8px",
-                      "md": "24px",
-                      "xl": "80px",
-                      "sm": "12px",
-                      "gutter": "24px"
-              },
-              "fontFamily": {
-                      "body-lg": ["Atkinson Hyperlegible Next"],
-                      "headline-md": ["Plus Jakarta Sans"],
-                      "label-caps": ["Plus Jakarta Sans"],
-                      "body-md": ["Atkinson Hyperlegible Next"],
-                      "display-lg": ["Plus Jakarta Sans"],
-                      "display-lg-mobile": ["Plus Jakarta Sans"]
-              },
-              "fontSize": {
-                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
-              }
-            },
-          },
-        }
-    </script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Climate Cardinals KNUST | Rooted in Climate Action</title>
+<meta name="description" content="A youth-led KNUST chapter translating climate knowledge into local languages and leading hands-on environmental action across the Ashanti region."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
-<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md flex justify-between items-center px-lg py-sm max-w-container-max mx-auto">
-<div class="flex items-center gap-base">
-<img src="images/climate cardinals logo.png" alt="Climate Cardinals KNUST Logo" class="h-13 w-14 object-contain rounded-full">
-<span class="text-headline-md font-headline-md text-primary tracking-tight">Climate Cardinals KNUST</span>
-</div>
-<nav class="hidden md:flex items-center gap-lg">
-<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#about">About</a>
-<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#team">Team</a>
-<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#impact">Impact</a>
-<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#events-preview">Events</a>
-<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#merch">Merch</a>
-<a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors" href="#contact">Contact Us</a>
-</nav>
-<div class="flex items-center gap-md">
-<a href="https://wkf.ms/3KZBKhZ" target="_blank" class="bg-primary text-on-primary font-body-lg px-md py-xs rounded-full hover:scale-95 transition-all duration-300 inline-flex items-center justify-center">Join Us</a>
-<button onclick="toggleMobileMenu()" class="md:hidden flex items-center justify-center p-2 rounded-full hover:bg-surface-container transition-colors">
-<span id="menu-icon" class="material-symbols-outlined text-primary text-2xl">menu</span>
-</button>
-</div>
-</header>
-
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="hidden fixed inset-0 bg-black/50 z-40 md:hidden" onclick="closeMobileMenu()"></div>
-
-<!-- Mobile Menu -->
-<nav id="mobile-nav" class="hidden fixed top-24 left-0 w-full bg-surface z-40 md:hidden shadow-lg transform transition-all duration-300 origin-top">
-<div class="flex flex-col p-lg gap-md max-w-container-max mx-auto">
-<a onclick="closeMobileMenu()" class="font-body-lg text-on-surface-variant hover:text-primary transition-colors py-md border-b border-on-surface/10" href="#about">About</a>
-<a onclick="closeMobileMenu()" class="font-body-lg text-on-surface-variant hover:text-primary transition-colors py-md border-b border-on-surface/10" href="#team">Team</a>
-<a onclick="closeMobileMenu()" class="font-body-lg text-on-surface-variant hover:text-primary transition-colors py-md border-b border-on-surface/10" href="#impact">Impact</a>
-<a onclick="closeMobileMenu()" class="font-body-lg text-on-surface-variant hover:text-primary transition-colors py-md border-b border-on-surface/10" href="#events-preview">Events</a>
-<a onclick="closeMobileMenu()" class="font-body-lg text-on-surface-variant hover:text-primary transition-colors py-md border-b border-on-surface/10" href="#merch">Merch</a>
-<a onclick="closeMobileMenu()" class="font-body-lg text-on-surface-variant hover:text-primary transition-colors py-md" href="#contact">Contact Us</a>
-</div>
-</nav>
-
-<script>
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-nav');
-    const overlay = document.getElementById('mobile-menu');
-    const icon = document.getElementById('menu-icon');
-    
-    if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        overlay.classList.remove('hidden');
-        icon.textContent = 'close';
-    } else {
-        closeMobileMenu();
-    }
-}
-
-function closeMobileMenu() {
-    const menu = document.getElementById('mobile-nav');
-    const overlay = document.getElementById('mobile-menu');
-    const icon = document.getElementById('menu-icon');
-    
-    menu.classList.add('hidden');
-    overlay.classList.add('hidden');
-    icon.textContent = 'menu';
-}
-
-// Close mobile menu when clicking on a link
-document.addEventListener('click', function(event) {
-    if (event.target.closest('#mobile-nav a')) {
-        closeMobileMenu();
-    }
-});
-</script>
+<body>
 <main>
-<!-- 1. Hero Section -->
-<section class="relative min-h-screen flex items-center pt-xl px-lg">
-<div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-lg items-center">
-<div class="z-10">
-<span class="inline-block px-sm py-xs bg-secondary-container text-on-secondary-container font-label-caps text-label-caps rounded-full mb-md">ROOTED IN ACTION</span>
-<h1 class="font-display-lg text-display-lg md:text-display-lg-mobile lg:text-display-lg text-primary mb-md leading-tight">
-                        Translating Climate Knowledge Into Local Action.
-                    </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-lg">
-                        Bridging language barriers at KNUST and beyond. We make vital climate research accessible to local communities, empowering everyone to fight for our planet.
-                    </p>
-<div class="flex flex-wrap gap-md">
-<button class="bg-primary text-on-primary font-body-lg px-xl py-base rounded-full hover:shadow-lg transition-shadow">Explore Our Mission</button>
-<button class="border-2 border-primary text-primary font-body-lg px-xl py-base rounded-full hover:bg-primary/5 transition-colors">Learn More</button>
-</div>
-</div>
-<div class="relative">
-<!-- Leafy Blob Mask Image -->
-<div class="blob-shape w-full aspect-square overflow-hidden bg-primary-fixed border-[12px] border-surface-container-low shadow-xl">
-<img class="w-full h-full object-cover" data-alt="A lush aerial shot of the Kwame Nkrumah University of Science and Technology (KNUST) campus, showing vibrant green canopies of tropical trees interspersed with modern academic buildings under a bright, clear sky. The lighting is warm and golden, reflecting a late afternoon sun that casts long, gentle shadows across the manicured lawns. The atmosphere is peaceful, academic, and deeply integrated with the natural landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg8YLjblvJ_GweTzaDGeimNyKWb5KKEW0e8EE3r_xYN_aoESPUmV_1m0H52PmEPNUr3FdDomJAedt5_NVpPunpFiYPu8b5dUzDz4hl0KgumSV20BSwPv7M5T7UARFz8JqpkkUAJh1vIW3onAz7fRG5YcPZVr7EwkgDC6x4ABZnRtSrSmHYKGRpWjjBdT5l_cbHqfrdvBUFxTHRHZx4U7_COQ_pB7Jsla8MQtdfOA7ghkFW89Wp0aCGkI5ta-PR5tmDinJv6m_FVssw"/>
-</div>
-<!-- Floating Accent -->
-<div class="absolute -bottom-8 -left-8 bg-surface-bright p-md rounded-xl border border-outline-variant/20 shadow-sm flex items-center gap-sm">
-<div class="w-12 h-12 rounded-full bg-secondary-fixed-dim flex items-center justify-center">
-<span class="material-symbols-outlined text-on-secondary-fixed">language</span>
-</div>
-<div>
-<p class="font-headline-md text-body-md text-primary leading-none">25+ Languages</p>
-<p class="text-label-caps text-on-surface-variant">Global Translation Reach</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Events Preview Section -->
 
-<!-- 2. About Section -->
-<section class="py-xl px-lg bg-surface-container-lowest" id="about">
-<div class="max-w-container-max mx-auto">
-<div class="grid md:grid-cols-12 gap-lg items-center">
-<div class="md:col-span-5 space-y-md">
-<h2 class="font-display-lg text-display-lg-mobile text-primary">Nurturing Change from the Ground Up</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-                            At Climate Cardinals KNUST, we believe that information is the first step toward conservation. We are a youth-led chapter dedicated to translating climate resources into regional Ghanaian languages and organizing on-campus environmental initiatives.
-                        </p>
-<ul class="space-y-sm">
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Community-led tree planting and waste management workshops.</span>
-</li>
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Resource translation into Twi, Ga, and Ewe.</span>
-</li>
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Empowering KNUST students to become global climate advocates.</span>
-</li>
-</ul>
-</div>
-<div class="md:col-span-7 grid grid-cols-2 gap-md">
-<div class="leaf-shape overflow-hidden h-80 shadow-md">
-<img class="w-full h-full object-cover" data-alt="A group of diverse Ghanaian university students wearing casual clothes and green armbands, smiling as they gather around a small sapling they just planted in an open campus green space. The sun creates a soft flare in the corner, highlighting the rich brown earth and the vibrant green of the young tree. The mood is hopeful, collaborative, and grounded in community action." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMOQw98RbFOUpPT5e2VaDPn5RIj2KCWIEj3huNsH8oldgrNtigU8buOB7llMQgtEQyLbRJW280rugrpwGL0ajCAwXWFt8Jl1-8H5WEVEnWahfP8dQEE1uAh_5ovRh5Hvzi1hm3GsbukRsTRG3UIr7uevdvoR17FC-s3KRKDm1Aeccool-nXZSMNofnRMNem-ZkFebrVIRo04RJSRLtwTae_WnY4jPpYk894zN143h22VnsyPnUJ1ToA7HPJgBpdIhhYTwLyM4txLce"/>
-</div>
-<div class="rounded-full overflow-hidden h-80 mt-12 shadow-md">
-<img class="w-full h-full object-cover" data-alt="Close-up detail of hands holding a printed pamphlet with environmental diagrams, with the text clearly visible in a local Ghanaian script like Twi. The background is a soft-focus garden with tropical foliage. The lighting is high-key and natural, emphasizing clarity and the importance of accessible information in the climate movement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0rIIJyLHkJxWNvznhLU-cN89vn8wOsf_hXY5zU3ov0pI42x1mm7J-Cl4pL3aBgUqC0YQG4zevD_U0LiMtBV9ULl6B2s7YaHsx4rHF-2pI8Qf1syD3sWEJd2T2dZXL0HvOiGyuyR0v1ULklKlg5SPNuB00uM108-zEZtnu95asZFgUmt1ATpEFoLIaKfFOrCkpeXYF_iiJUJ8Zq833q4VH2MsWZSIflYlhgSnw5fIB_4gr9uWpC_h2wexE2VFBcvU0COkK-QbfK1r9"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 3. Leadership/Team Section -->
-<section class="py-xl px-lg bg-surface" id="team">
-<div class="max-w-container-max mx-auto">
-<!-- Hero Section -->
-<div class="mb-xl text-center">
-<div class="inline-flex items-center gap-xs px-sm py-xs bg-secondary-container text-on-secondary-container rounded-full mb-md">
-<span class="material-symbols-outlined text-[18px]">eco</span>
-<span class="font-label-caps text-label-caps uppercase">Our Human Roots</span>
-</div>
-<h1 class="font-display-lg text-display-lg text-primary mb-md max-w-2xl mx-auto">The heartbeat of climate action at KNUST.</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">
-We are a collective of youth activists, translators, and educators bridging the gap between climate science and local communities in the Ashanti region.
-</p>
-</div>
-<!-- Chapter Leadership Grid -->
-<div class="mb-xl">
-<h2 class="font-headline-md text-headline-md text-primary mb-lg flex items-center gap-sm">
-<span class="material-symbols-outlined" data-icon="stars">stars</span>
-Chapter Leadership
-</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-<!-- Leader Card 1 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A professional portrait of a young Ghanaian woman with a friendly smile, photographed in soft natural outdoor lighting with lush tropical greenery in the background. She wears a minimalist cream-colored outfit, reflecting a clean biophilic aesthetic. The style is bright and airy with high-key lighting, maintaining a modern and professional atmosphere." src="images/patron.jpeg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Dr.Edmund Yamba</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Patron</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">A climate scientist and researcher at KNUST, Dr. Yamba serves as the Chapter Patron, providing mentorship and strategic guidance. His expertise in climate science and commitment to research continue to inspire the chapter’s mission of advancing climate education and action.
-</p>
-</div>
-<!-- Leader Card 2 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape-alt overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a focused young West African man in his early 20s, looking confidently towards the camera. The background shows a modern campus environment with soft-focus architectural elements and clear sky. The lighting is warm and organic, emphasizing a hopeful and professional climate activist persona. Minimalist style with earth-toned color palette." src="images/delegate.jpeg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Michelle Fosuah Kwarteng</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Chapter President </p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">A Meteorology and Climate Science student at KNUST passionate about climate education, youth empowerment, and sustainable development. She leads the chapter with a vision of creating opportunities for students to learn, collaborate, and drive meaningful climate action within their communities.</p>
-</div>
-<!-- Leader Card 3 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Ghanaian female student with braids, wearing a simple green linen top. She is positioned in a garden with soft morning sunlight filtering through leaves. The image has a calm, grounded, and biophilic aesthetic, using a soft depth of field. The overall tone is optimistic and earthy, perfectly suited for a climate action platform." src="images/akosua nyarko .jpeg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Akosua Nyarko Duodu</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Chapter Vice President</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">A Biological Sciences student with a passion for innovation and environmental sustainability. Akosua brings creativity, curiosity, and fresh ideas to the team, contributing to initiatives that inspire young people to take action for the planet</p>
-</div>
-<!-- Leader Card 4 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape-alt overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Ghanaian man in casual attire, photographed against a blurred natural backdrop. Soft natural lighting, professional yet approachable demeanor, warm earth tones, biophilic aesthetic." src="images/general secretary.jpeg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Rachel  Opoku Asiamah</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">General Secretary</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">A Meteorology and Climate Science student with a strong interest in climate communication and environmental stewardship. Rachel is committed to promoting climate literacy and encouraging youth participation in sustainability initiatives.</p>
-</div>
-<!-- Leader Card 5 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Ghanaian woman in professional attire, smiling warmly. Natural outdoor lighting with soft green foliage in background. Clean, minimalist style with warm tones." src="images/10-IMG_6954 (2).jpg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Yvonne Antwi-Agyei</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Public relations and media head</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">A BSC. Human Biology MB.CHB student dedicated to promoting the connection between climate and public health. Yvonne is committed to using science and advocacy to help build healthier, more climate-resilient communities.</p>
-</div>
+  <!-- Hero -->
+  <section class="cc-hero">
+    <div class="cc-hero__blob cc-hero__blob--1"></div>
+    <div class="cc-hero__blob cc-hero__blob--2"></div>
+    <div class="cc-container cc-hero__inner">
+      <div>
+        <span class="cc-eyebrow cc-eyebrow--light">🌍 Rooted in action</span>
+        <h1>Translating climate knowledge into local action.</h1>
+        <p>We are a youth-led KNUST chapter making vital climate research accessible in Twi, Ga, Ewe and beyond — and turning knowledge into trees planted, minds changed, and communities empowered.</p>
+        <div class="cc-hero__cta">
+          <a href="#about" class="cc-btn cc-btn--accent cc-btn--lg">Explore our mission</a>
+          <a href="index.html" class="cc-btn cc-btn--light cc-btn--lg">Upcoming events</a>
+        </div>
+      </div>
+      <div class="cc-hero__media">
+      <div class="cc-hero__art">
+        <!-- Self-contained SVG scene: sky, hills, sun, growing sapling -->
+        <svg viewBox="0 0 400 400" width="100%" height="100%" role="img" aria-label="A sapling growing on green hills under a warm sun" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#bfe28f"/><stop offset="1" stop-color="#e9f3d3"/>
+            </linearGradient>
+            <linearGradient id="hillA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2f8a45"/><stop offset="1" stop-color="#1c6b34"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="400" fill="url(#sky)"/>
+          <circle cx="300" cy="110" r="54" fill="#e2b13c" opacity="0.9"/>
+          <circle cx="300" cy="110" r="72" fill="#e2b13c" opacity="0.25"/>
+          <path d="M0 300 Q120 250 220 300 T400 290 V400 H0 Z" fill="#84cc16" opacity="0.65"/>
+          <path d="M0 340 Q140 300 260 345 T400 335 V400 H0 Z" fill="url(#hillA)"/>
+          <g transform="translate(200 300)">
+            <path d="M0 60 V-30" stroke="#14532d" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M0 -8 C -46 -20 -58 -64 -20 -86 C -6 -60 -2 -34 0 -8 Z" fill="#2f8a45"/>
+            <path d="M0 -22 C 44 -34 58 -78 22 -100 C 6 -74 2 -48 0 -22 Z" fill="#4d7c4d"/>
+            <path d="M0 20 C -34 12 -44 -18 -18 -34 C -8 -14 -4 2 0 20 Z" fill="#84cc16"/>
+          </g>
+        </svg>
+      </div>
+        <div class="cc-hero__stat"><b>25+</b><span>Languages reached</span></div>
+      </div>
+    </div>
+  </section>
 
-<!-- Leader Card 7 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Ghanaian woman in green casual wear. Backlit by soft golden hour lighting with natural foliage. Peaceful and nature-connected aesthetic." src="images/organizing secretary.jpeg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Perpetual Nyamaa Sam </h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Organizing Secretary</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">Driving sustainability initiatives and ensuring our programs align with environmental goals.</p>
-</div>
+  <!-- Mission / About -->
+  <section class="cc-section" id="about">
+    <div class="cc-container">
+      <div class="cc-section-head cc-center">
+        <span class="cc-eyebrow">Our Mission</span>
+        <h2 class="cc-h2">Nurturing change from the ground up</h2>
+        <p class="cc-lead">Information is the first step toward conservation. We translate climate resources into regional Ghanaian languages and organise on-campus environmental action that anyone can join.</p>
+      </div>
+      <div class="cc-grid cc-grid--3">
+        <div class="cc-card cc-feature cc-reveal">
+          <div class="cc-feature__icon" data-ico="translate"></div>
+          <h3 class="cc-h3">Translate</h3>
+          <p>We turn dense climate science into Twi, Ga and Ewe so knowledge reaches every community, not just English speakers.</p>
+        </div>
+        <div class="cc-card cc-feature cc-reveal">
+          <div class="cc-feature__icon" data-ico="tree"></div>
+          <h3 class="cc-h3">Restore</h3>
+          <p>Community-led tree planting, campus clean-ups and waste-management workshops that put restoration into practice.</p>
+        </div>
+        <div class="cc-card cc-feature cc-reveal">
+          <div class="cc-feature__icon" data-ico="users"></div>
+          <h3 class="cc-h3">Empower</h3>
+          <p>We equip KNUST students to become confident, global climate advocates through training, seminars and fellowships.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Leader Card 6 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape-alt overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Ghanaian male student in casual professional wear. Shot in natural lighting with botanical elements in background. Optimistic and grounded aesthetic." src="images/organizing secretary 2.jpeg"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Benjamin Agorbia</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Deputy Organizing Secretary</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">A Meteorology and Climate Science student passionate about climate science and collaborative problem-solving. Benjamin supports the chapter’s mission by contributing to programs that foster climate awareness and inspire action among students.</p>
-</div>
-<!-- Leader Card 8 -->
-<div class="bg-surface-container-low p-md rounded-xl border border-outline/10 flex flex-col items-center text-center hover:bg-surface-container-high transition-colors duration-300 group">
-<div class="w-48 h-48 pebble-shape-alt overflow-hidden mb-md border-2 border-secondary/20 group-hover:border-secondary transition-all">
-<img class="w-full h-full object-cover" data-alt="A portrait of a young Ghanaian male professional. Professional yet approachable atmosphere with natural outdoor setting. Warm lighting and earthy color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuGV4V5W6X7Y8Z9A0B1C2D3E4F5G6H7I8J9K0L1M2N3O4P5Q6R7S8T9U0V1"/>
-</div>
-<h3 class="font-headline-md text-headline-md text-primary">Ebo Mensah</h3>
-<p class="font-label-caps text-label-caps text-secondary mb-sm uppercase">Financial Secretary</p>
-<p class="font-body-md text-body-md text-on-surface-variant px-sm">Leading policy advocacy efforts and representing youth perspectives in climate action discourse.</p>
-</div>
-</div>
-<!-- Fellows Section (Asymmetric Bento Grid) -->
-<div class="mb-xl">
-<h2 class="font-headline-md text-headline-md text-primary mb-lg flex items-center gap-sm">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-Active Fellows
-</h2>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-sm">
-<!-- Fellow 1 -->
-<div class="md:col-span-2 bg-white/50 backdrop-blur-sm p-md border border-outline/10 rounded-xl flex gap-md items-center hover:bg-white transition-all">
-<div class="w-24 h-24 shrink-0 pebble-shape-alt overflow-hidden border border-secondary/10">
-<img class="w-full h-full object-cover" data-alt="Close-up portrait of a cheerful young man of African descent, wearing a beige cotton shirt. He is outdoors with soft-focus trees and sunlight behind him. The image style is minimalist, clean, and professional, utilizing a warm and natural lighting palette consistent with an earthy, nature-inspired brand identity." src="images/Daniel Amponsah.jpeg"/>
-</div>
-<div>
-<h4 class="font-headline-md text-headline-md text-primary">Daniel Amponsah</h4>
-<p class="font-label-caps text-label-caps text-secondary uppercase">Research Fellow</p>
-<p class="text-sm mt-xs">Contributing to the chapter’s daily operations and ensuring the success of its initiatives..</p>
-</div>
-</div>
-<!-- Fellow 2 -->
-<div class="md:col-span-2 bg-white/50 backdrop-blur-sm p-md border border-outline/10 rounded-xl flex gap-md items-center hover:bg-white transition-all">
-<div class="w-24 h-24 shrink-0 pebble-shape overflow-hidden border border-secondary/10">
-<img class="w-full h-full object-cover" data-alt="A close-up side profile of a young Ghanaian woman with short hair, smiling warmly. She is in a brightly lit room with organic textures like wood and stone in the background. The lighting is high-key and clean. The overall mood is human-centric, hopeful, and deeply connected to the biophilic design theme." src="images/Justice .jpeg"/>
-</div>
-<div>
-<h4 class="font-headline-md text-headline-md text-primary">Justice Osei Kwakye</h4>
-<p class="font-label-caps text-label-caps text-secondary uppercase">Policy Fellow</p>
-<p class="text-sm mt-xs">Bridging regional policy gaps with youth-led research.</p>
-</div>
-</div>
-<!-- Fellow 3 -->
-<div class="md:col-span-1 bg-surface-container-lowest p-md border border-outline/10 rounded-xl flex flex-col items-center text-center hover:shadow-lg hover:shadow-primary/5 transition-all">
-<div class="w-20 h-20 pebble-shape-alt overflow-hidden mb-sm border border-secondary/10">
-<img class="w-full h-full object-cover" data-alt="Portrait of a young male student wearing a white shirt, soft natural lighting, minimalist greenhouse background, earth tones, high-legibility style, professional and optimistic." src="images/samuella christa.jpeg"/>
-</div>
-<h4 class="font-body-md font-bold text-primary">Samuella Christa Sarpong</h4>
-<p class="text-xs text-secondary uppercase tracking-wider">Chemical Engineering student</p>
-</div>
-<!-- Fellow 4 -->
-<div class="md:col-span-1 bg-surface-container-lowest p-md border border-outline/10 rounded-xl flex flex-col items-center text-center hover:shadow-lg hover:shadow-primary/5 transition-all">
-<div class="w-20 h-20 pebble-shape overflow-hidden mb-sm border border-secondary/10">
-<img class="w-full h-full object-cover" data-alt="Portrait of a young female educator, soft smile, outdoor setting with clear blue sky and soft green foliage, warm sunlight, biophilic aesthetic, soft tonal layering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYMcMmFw3LQ25IHqIuiRkV0M8Kb7oGuz9W7C_rfRGRyOo4qzARsd8jN9pNo504e6cZ4HZQ7IHERxK0B33fzNbWQvpbx-mqVdJwPuO-We06PY5-WL-LCiDtVMzcHlLntejMKv9EdEwS9l_6iKqtoJoeAVnt9UE8s9fStdjb3Wxv_3sjodP2eoTs4ahujwJPfMsEUAX07LHiAGm320MVIOsPoz65i-SPOZQHSfsGL4USalm3ufjsjWWv3gexAMy2svoYf_baiiRI95Q"/>
-</div>
-<h4 class="font-body-md font-bold text-primary">Akua Dankwa</h4>
-<p class="text-xs text-secondary uppercase tracking-wider">Education</p>
-</div>
-<!-- Fellow 5 -->
-<div class="md:col-span-2 bg-secondary-container/20 p-md border border-secondary/20 rounded-xl flex items-center justify-between">
-<div>
-<h4 class="font-headline-md text-primary">Join the Fellows</h4>
-<p class="text-sm text-on-surface-variant max-w-[200px]">We are looking for more language advocates in the Ashanti region.</p>
-</div>
-<button class="bg-primary text-on-primary w-12 h-12 rounded-full flex items-center justify-center hover:scale-105 transition-transform">
-<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 4. Impact Section -->
-<section class="py-xl px-lg bg-surface-container-low overflow-hidden" id="impact">
-<div class="max-w-container-max mx-auto relative">
-<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
-<div class="max-w-xl">
-<h2 class="font-display-lg text-display-lg-mobile text-primary mb-sm">Our Roots Run Deep</h2>
-<p class="font-body-lg text-on-surface-variant">The quantifiable change we have cultivated within the KNUST community over the past year.</p>
-</div>
-<a href="impact.html" class="flex items-center gap-xs text-primary font-body-lg hover:text-primary/80 transition-colors">
-<span>View Annual Report</span>
-<span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-<!-- Bento Style Impact Cards -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-md">
-<div class="md:col-span-2 bg-primary-container text-on-primary-container p-xl rounded-2xl flex flex-col justify-between">
-<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">translate</span>
-<div>
-<h4 class="text-6xl font-display-lg mt-md">500+</h4>
-<p class="font-body-lg opacity-90">Pages of Climate Data Translated into local dialects.</p>
-</div>
-</div>
-<div class="bg-surface-container-high p-lg rounded-2xl border border-outline-variant/10 text-center flex flex-col items-center justify-center">
-<div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-md">
-<span class="material-symbols-outlined text-secondary text-3xl">groups</span>
-</div>
-<h4 class="text-4xl font-headline-md text-primary">1,200</h4>
-<p class="text-on-surface-variant">Volunteers Engaged</p>
-</div>
-<div class="bg-[#e8f0e4] p-lg rounded-2xl border border-outline-variant/10 text-center flex flex-col items-center justify-center">
-<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-md">
-<span class="material-symbols-outlined text-primary text-3xl">forest</span>
-</div>
-<h4 class="text-4xl font-headline-md text-primary">350</h4>
-<p class="text-on-surface-variant">Trees Planted on Campus</p>
-</div>
-<div class="md:col-span-4 bg-tertiary text-on-tertiary p-xl rounded-2xl flex flex-col md:flex-row items-center gap-lg">
-<div class="flex-1">
-<h4 class="text-3xl font-headline-md mb-xs">Educational Outreach</h4>
-<p class="opacity-80">We've reached over 15 local schools in the Kumasi region, hosting seminars that demystify climate change for the next generation of leaders.</p>
-</div>
-<div class="w-full md:w-1/3 aspect-video rounded-lg overflow-hidden border-4 border-surface/20">
-<img class="w-full h-full object-cover" data-alt="A wide-angle shot of a classroom filled with enthusiastic primary school children in Kumasi. They are looking at a large colorful wall poster about the water cycle and climate change. A young university volunteer is pointing to the poster. The sunlight streams through large windows, creating a bright, optimistic, and educational atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuDpJIJ-yfTjt0jvNE0lJIPof2UwU6xFoZCvxZhUNVcgEMKvDtoR67V6HLLVFP9G3GLdkCL4HCB3i3Q6CZB-dTYxiuxji9l1wyXFOyAUFb2MxzCpElLyz2WCRwMpIZnwm3QMqaDsHIaPrpSgrD1NJd0v7XGYGr0nQHIJRVL0xWQl6yh2rwOH-0t6DBw3-G57b-lNBF4nWEgzopb1ik8FaAy6GsD3CGqU6sP2Ut5FK58arNfnIO8qyZILZtv0gVwV87Yt40NltER9Mo"/>
-</div>
-</div>
-</div>
-</div>
-</section>
-!EVENTSECTION
-<section class="py-xl px-lg bg-surface-container-lowest" id="events-preview">
-<div class="max-w-container-max mx-auto">
-<div class="grid md:grid-cols-2 gap-lg items-center">
-<div class="space-y-md">
-<span class="text-secondary font-label-caps tracking-widest uppercase">Upcoming Events</span>
-<h2 class="font-display-lg text-display-lg-mobile text-primary mt-xs">Join Our Climate Action Events</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-Explore workshops, seminars, and community activities designed to empower KNUST students and the broader community to take meaningful climate action. From tree planting initiatives to educational seminars, discover how you can get involved.
-</p>
-<ul class="space-y-sm">
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Tree planting and restoration workshops</span>
-</li>
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Climate advocacy seminars with experts</span>
-</li>
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Nature walks and biodiversity education</span>
-</li>
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
-<span class="font-body-md">Community meetings and strategy sessions</span>
-</li>
-</ul>
-<a class="inline-flex items-center gap-sm bg-primary text-on-primary px-xl py-base rounded-full hover:shadow-lg transition-shadow font-body-lg" href="index.html">
-<span>Open Full Event Details</span>
-<span class="material-symbols-outlined">arrow_forward</span>
-</a>
-</div>
-<div class="rounded-2xl overflow-hidden shadow-lg border border-outline-variant/10 h-96">
-<img class="w-full h-full object-cover" data-alt="A vibrant scene of young university students gathered outdoors at sunset in a botanical garden setting. They are engaged in an environmental workshop, holding saplings and smiling together. The golden hour lighting creates a warm, inspiring atmosphere that captures the essence of community climate action and youth engagement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBibtMPf2-0mODBwfUA51T1ipTdXnOkopYrL6LrtZqO6HKp5-7d8ml1agX1vCuqs4NQyJwdHDM1Z9Jn-AngaH3SiguunExjzf1zVMjNUvdICpsLA_ASuTkXXXTal07pXTl4959aT-Lnf874oRbfU0DAmWMus9p-FUEx33DUOn6j2UB8EguLYd_T5leOVbiVipmEzcoqGVCt4CoAqRiaGRiISPCz50E7LhwerhYqD6YULqbdTZ0bHGHTNGz4oy5s9xvx8ZcGtF-vvDnw"/>
-</div>
-</div>
-</div>
-</section>
-<!-- 5. Merch Section -->
-<section class="py-xl px-lg bg-surface" id="merch">
-<div class="max-w-container-max mx-auto">
-<div class="text-center mb-xl">
-<span class="text-secondary font-label-caps tracking-widest">ECO-CONSCIOUS APPAREL</span>
-<h2 class="font-display-lg text-display-lg-mobile text-primary mt-xs">Wear the Movement</h2>
-</div>
-<div class="grid md:grid-cols-3 gap-lg">
-<!-- Item 1 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[3/4] bg-surface-container-low rounded-2xl overflow-hidden mb-md border border-outline-variant/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A premium organic cotton tote bag in a natural cream color, featuring a minimalist screen-printed design of a stylized cardinal bird perched on a leafy branch in Forest Green. The bag is hanging from a weathered wooden post in a garden setting, surrounded by soft green foliage. The aesthetic is clean, eco-friendly, and high-quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4k43nFXzSp59173O3I8gHARsXJQ3byL8xZkw7Js0gyQGc0VDHG0C5GrZdu-oEk8dUbUiGJPTSFBAd1WvtEyzFjVtp7EmPXV8avOpgUAYkNL7IoOPiD_e6OhiMxOnheHZ4lz2vPuLhEpVH8WFRzZHejSa2YvbNCoKIS9zpzMgp69MywweNYU0gdQhKALKimBNHPcWrUlQg6xizJmu3KlShLelJp5ILpBu_6s8EpqQVY6OTA1L2Y7-YahHrQyX4i86sfkuD_lZPS3g1"/>
-<div class="absolute bottom-4 left-4 bg-surface/90 backdrop-blur px-sm py-xs rounded-lg text-primary font-bold">₵ 45.00</div>
-</div>
-<h3 class="font-headline-md text-primary">Cardinal Tote Bag</h3>
-<p class="text-on-surface-variant text-body-md">100% Recycled Cotton</p>
-</div>
-<!-- Item 2 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[3/4] bg-surface-container-low rounded-2xl overflow-hidden mb-md border border-outline-variant/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A soft, Forest Green t-shirt laid out on a clean white stone surface. The shirt features the Climate Cardinals logo in a subtle, lighter green embroidery on the chest. A small potted succulent sits next to the shirt. The lighting is soft and natural, emphasizing the organic texture of the fabric and the earthy color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQT1aofZZo1MjdkJS8PiYNnu_P70vpkX5YxWaayCvF9sC9cEgbD-T0zpdxpS49I_tscQpiiBd3lsPYWR0ra8WzaiUMHNmPlgS1RIzC_gm6KXPDyCjzAe44b0M7e3lE0gun38ZevJEYaeaVlmmicHgfL0d_tUQ-bwMmfFDkqrj0w43RpfZZKHa4i8VX5ujAvCQip5F61AbQ0Nd3t_d_t8RkL6UYpWMgxNAiw6dkXJEr4WCENP5e28SymR4Mqi8kfitK40lDe4cKKPbX"/>
-<div class="absolute bottom-4 left-4 bg-surface/90 backdrop-blur px-sm py-xs rounded-lg text-primary font-bold">₵ 85.00</div>
-</div>
-<h3 class="font-headline-md text-primary">"Rooted" Tee</h3>
-<p class="text-on-surface-variant text-body-md">Eco-friendly Bamboo Blend</p>
-</div>
-<!-- Item 3 -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[3/4] bg-surface-container-low rounded-2xl overflow-hidden mb-md border border-outline-variant/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, matte-finish water bottle in a soft sky-blue color, featuring a laser-etched 'Climate Cardinals KNUST' text. The bottle is placed on a rustic wooden bench next to a pair of hiking boots. The scene is outdoors in a forest trail, with dappled sunlight hitting the surface. The design is durable, modern, and perfectly suited for an active, nature-focused lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6U7ugMk_GkDVGSLEHwmojtpsc0KkTryjXT1mZxaI8dB1uYYNmbuNlv0goF0vyiZh9XfHSIVa8NKs9BQevF-xw-JPWpoYBhTn1RsCuGTwn5vvlIeJvE0atHAgMl0_YJd02eTIQ7rJ_nvEa8FanE0vkKGr5Rby_Yh6h_bFiiI_y8DVvkOJG79SZKQsO-WeaSflcFi88uPOEyLrGF8XQyay6g4xKJuMARRdOST091OuQm6bQNimir9of_oYviUIDZbpHAqkrwvwmmebr"/>
-<div class="absolute bottom-4 left-4 bg-surface/90 backdrop-blur px-sm py-xs rounded-lg text-primary font-bold">₵ 120.00</div>
-</div>
-<h3 class="font-headline-md text-primary">Stainless Hydrator</h3>
-<p class="text-on-surface-variant text-body-md">Double-walled Insulation</p>
-</div>
-</div>
-<div class="mt-lg text-center">
-<a href="shop.html" class="inline-block bg-primary text-on-primary font-body-lg px-xl py-base rounded-full hover:bg-primary-container transition-colors">Visit Full Shop</a>
-</div>
-</div>
-</section>
-<!-- 6. CTA Section -->
-<section class="py-xl px-lg" id="contact">
-<div class="max-w-container-max mx-auto bg-tertiary-fixed rounded-3xl p-xl flex flex-col items-center text-center relative overflow-hidden">
-<!-- Decorative Elements -->
-<div class="absolute top-0 right-0 p-lg opacity-20">
-<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">eco</span>
-</div>
-<div class="relative z-10 max-w-2xl">
-<h2 class="font-display-lg text-display-lg text-on-tertiary-fixed mb-md">Join the Movement</h2>
-<p class="font-body-lg text-on-tertiary-fixed-variant mb-xl">
-                        Whether you're a student, a researcher, or just someone who cares about the planet, there's a place for you in our flock. Let's build a greener future together.
-                    </p>
-<div class="flex flex-col sm:flex-row gap-md justify-center">
-<button data-volunteer type="button" class="bg-primary text-on-primary font-body-lg px-xl py-md rounded-full hover:scale-105 transition-transform inline-flex items-center justify-center">Become a Volunteer</button>
-<button data-contact type="button" class="bg-surface text-primary border border-primary/20 font-body-lg px-xl py-md rounded-full hover:bg-surface-bright transition-colors">Contact Chapter</button>
-</div>
-<p class="mt-lg text-sm font-label-caps text-on-tertiary-fixed-variant/60 uppercase">No prior experience required • Open to all KNUST faculties</p>
-</div>
-</div>
-</section>
+  <!-- Impact stats -->
+  <section class="cc-section cc-bg-alt" id="impact">
+    <div class="cc-container">
+      <div class="cc-section-head cc-center">
+        <span class="cc-eyebrow">Our Impact</span>
+        <h2 class="cc-h2">Measured in more than words</h2>
+      </div>
+      <div class="cc-grid cc-grid--4" data-impact-stats>
+        <div class="cc-loading">Loading impact…</div>
+      </div>
+      <div class="cc-center cc-mt-l">
+        <a href="impact.html" class="cc-btn cc-btn--ghost">Read the full impact report <span data-ico="arrowRight"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="cc-section" id="team">
+    <div class="cc-container">
+      <div class="cc-section-head cc-center">
+        <span class="cc-eyebrow">Our Human Roots</span>
+        <h2 class="cc-h2">The heartbeat of climate action at KNUST</h2>
+        <p class="cc-lead">A collective of youth activists, translators and educators bridging climate science and local communities.</p>
+      </div>
+      <h3 class="cc-h3" style="margin-bottom:20px">Chapter Leadership</h3>
+      <div class="cc-grid cc-grid--3" data-team="leadership"><div class="cc-loading">Loading team…</div></div>
+      <h3 class="cc-h3" style="margin:44px 0 20px">Active Fellows</h3>
+      <div class="cc-grid cc-grid--4" data-team="fellow"></div>
+    </div>
+  </section>
+
+  <!-- Merch preview -->
+  <section class="cc-section cc-bg-alt" id="merch">
+    <div class="cc-container">
+      <div class="cc-section-head cc-center">
+        <span class="cc-eyebrow">Sustainable Swag</span>
+        <h2 class="cc-h2">Wear the change you want to see</h2>
+        <p class="cc-lead">100% of proceeds fund local climate education and tree-planting in Kumasi.</p>
+      </div>
+      <div class="cc-grid cc-grid--3" data-featured-products data-limit="3">
+        <div class="cc-loading">Loading merch…</div>
+      </div>
+      <div class="cc-center cc-mt-l">
+        <a href="shop.html" class="cc-btn cc-btn--primary">Visit the full shop <span data-ico="arrowRight"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / CTA -->
+  <section class="cc-section" id="contact">
+    <div class="cc-container">
+      <div class="cc-cta">
+        <div class="cc-cta__blob" style="width:320px;height:320px;background:#84cc16;top:-120px;left:-80px"></div>
+        <div class="cc-cta__blob" style="width:280px;height:280px;background:#0e4f63;bottom:-120px;right:-60px"></div>
+        <div style="position:relative;z-index:2">
+          <h2>Join the movement</h2>
+          <p>Whether you're a student, researcher, or simply someone who cares about the planet, there's a place for you in our flock. No prior experience required — open to all KNUST faculties.</p>
+          <div class="cc-cta__actions">
+            <button class="cc-btn cc-btn--accent cc-btn--lg" data-volunteer>Become a volunteer</button>
+            <button class="cc-btn cc-btn--light cc-btn--lg" data-contact>Contact the chapter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
-<!-- Footer -->
-<footer class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-low border-t border-outline-variant/10 rounded-t-xl mt-xl">
-<div class="flex flex-col items-center md:items-start gap-sm">
-<div class="flex items-center gap-xs">
-<span class="material-symbols-outlined text-primary text-headline-md" style="font-variation-settings: 'FILL' 1;">eco</span>
-<span class="font-headline-md text-headline-md text-primary">Climate Cardinals KNUST</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-sm text-center md:text-left">
-                © 2024 Climate Cardinals KNUST. Rooted in Nature, Driven by Change.
-            </p>
-</div>
-<div class="flex flex-wrap justify-center gap-lg">
-<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
-<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
-<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="https://wkf.ms/3KZBKhZ" target="_blank">Volunteer Portal</a>
-<a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#contact">FAQ</a>
-</div>
-<div class="flex gap-md">
-<a class="w-10 h-10 rounded-full bg-surface-bright border border-outline-variant/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="https://twitter.com" target="_blank" title="Twitter">
-<i class="material-symbols-outlined">public</i>
-</a>
-<a class="w-10 h-10 rounded-full bg-surface-bright border border-outline-variant/20 flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="mailto:info@climatecardinalsknust.org" title="Email">
-<i class="material-symbols-outlined">mail</i>
-</a>
-</div>
-</footer>
-<!-- Simple Micro-interactions -->
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.1
-            };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                        entry.target.classList.remove('opacity-0', 'translate-y-10');
-                    }
-                });
-            }, observerOptions);
-
-            // Add basic reveal animation to sections
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
-                observer.observe(section);
-            });
-
-            // Smooth Scroll active state
-            const navLinks = document.querySelectorAll('nav a');
-            window.addEventListener('scroll', () => {
-                let current = '';
-                document.querySelectorAll('section').forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(a => {
-                    a.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
-                    if (a.getAttribute('href').slice(1) === current) {
-                        a.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary', 'pb-1');
-                    }
-                });
-            });
-        });
-    </script>
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/site.js"></script>
+<script src="js/content.js"></script>
 <script src="js/forms.js"></script>
 <script src="js/chrome.js"></script>
-</body></html>
+</body>
+</html>
