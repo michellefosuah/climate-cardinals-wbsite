@@ -159,153 +159,18 @@
 <section class="sticky top-[64px] z-40 bg-surface/80 backdrop-blur-md border-b border-outline/5">
 <div class="max-w-container-max mx-auto px-gutter py-4">
 <div class="flex items-center gap-sm overflow-x-auto no-scrollbar">
-<button class="px-md py-2 rounded-full bg-primary text-on-primary font-body-md transition-all whitespace-nowrap">All Events</button>
-<button class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Workshops</button>
-<button class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Seminars</button>
-<button class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Meetings</button>
-<button class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Nature Walks</button>
+<button data-event-category="" class="px-md py-2 rounded-full bg-primary text-on-primary font-body-md transition-all whitespace-nowrap">All Events</button>
+<button data-event-category="WORKSHOP" class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Workshops</button>
+<button data-event-category="SEMINAR" class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Seminars</button>
+<button data-event-category="MEETING" class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Meetings</button>
+<button data-event-category="NATURE_WALK" class="px-md py-2 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-all whitespace-nowrap">Nature Walks</button>
 </div>
 </div>
 </section>
 <!-- Events List -->
 <section class="max-w-[1000px] mx-auto px-gutter py-xl">
-<div class="space-y-lg">
-<!-- Event Card 1 -->
-<div class="event-card-hover group flex flex-col md:flex-row gap-md p-md bg-surface-container-lowest rounded-xl border border-outline/10 overflow-hidden">
-<div class="flex-shrink-0 flex flex-col items-center justify-center w-24 h-24 bg-primary-container text-on-primary-container rounded-xl">
-<span class="font-label-caps text-label-caps uppercase opacity-80">Oct</span>
-<span class="font-headline-md text-3xl font-bold">20</span>
-</div>
-<div class="flex-grow space-y-sm">
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md text-primary">Tree Planting Workshop</h3>
-<div class="flex flex-wrap gap-md mt-1 text-on-surface-variant font-body-md">
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">schedule</span>
-<span>09:00 AM - 12:00 PM</span>
-</div>
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">location_on</span>
-<span data-location="KNUST Botanical Gardens">KNUST Botanical Gardens</span>
-</div>
-</div>
-</div>
-</div>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed">
-                            Join us for a hands-on session on native species restoration. Learn about the diverse ecosystems within our campus and help us plant over 50 saplings to increase local canopy cover.
-                        </p>
-<div class="flex items-center gap-sm pt-sm">
-<button class="px-xl py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-all font-bold shadow-sm">Register</button>
-<button class="px-md py-2 border border-primary text-primary rounded-full hover:bg-primary/5 transition-all">Details</button>
-</div>
-</div>
-<div class="hidden lg:block w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="Close up of young diverse students' hands gently planting a small green sapling into dark, fertile earth. The background shows a sunny botanical garden with blurred tropical trees. The lighting is soft and natural, emphasizing the connection between humans and the environment in a professional, clean UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBibtMPf2-0mODBwfUA51T1ipTdXnOkopYrL6LrtZqO6HKp5-7d8ml1agX1vCuqs4NQyJwdHDM1Z9Jn-AngaH3SiguunExjzf1zVMjNUvdICpsLA_ASuTkXXXTal07pXTl4959aT-Lnf874oRbfU0DAmWMus9p-FUEx33DUOn6j2UB8EguLYd_T5leOVbiVipmEzcoqGVCt4CoAqRiaGRiISPCz50E7LhwerhYqD6YULqbdTZ0bHGHTNGz4oy5s9xvx8ZcGtF-vvDnw"/>
-</div>
-</div>
-<!-- Event Card 2 -->
-<div class="event-card-hover group flex flex-col md:flex-row gap-md p-md bg-surface-container-lowest rounded-xl border border-outline/10 overflow-hidden">
-<div class="flex-shrink-0 flex flex-col items-center justify-center w-24 h-24 bg-primary-container text-on-primary-container rounded-xl">
-<span class="font-label-caps text-label-caps uppercase opacity-80">Nov</span>
-<span class="font-headline-md text-3xl font-bold">05</span>
-</div>
-<div class="flex-grow space-y-sm">
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md text-primary">Climate Advocacy Seminar</h3>
-<div class="flex flex-wrap gap-md mt-1 text-on-surface-variant font-body-md">
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">schedule</span>
-<span>02:00 PM - 04:30 PM</span>
-</div>
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">location_on</span>
-<span data-location="KNUST Main Auditorium">Main Auditorium</span>
-</div>
-</div>
-</div>
-</div>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed">
-                            Learn how to effectively communicate climate science to local policymakers and influence community-level environmental decisions. This seminar features guest speakers from environmental NGOs.
-                        </p>
-<div class="flex items-center gap-sm pt-sm">
-<button class="px-xl py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-all font-bold shadow-sm">Register</button>
-<button class="px-md py-2 border border-primary text-primary rounded-full hover:bg-primary/5 transition-all">Details</button>
-</div>
-</div>
-<div class="hidden lg:block w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="A modern, minimalist auditorium interior with a focus on a speaker's podium decorated with a Climate Cardinals logo. The lighting is professional and warm. Large windows in the background reveal the lush greenery of a university campus, blending the interior professional setting with a biophilic natural environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAarqH848UL6xgTV5ysihNq20i8_yP2O2GeHj73CqFk8__avqj__AU36_-FCVWf-TE9OxNfeUu5aeL62oZ3ljtb0JrmbR5Qy9R5Aw-layfyZIpdBNAsC85Mv_sJmLzWZpNg7ONe5gd0rbBMUlfpg1brp9qHdFIqZ1PFF6zLM8MnwtXZTLAGG7Sb7g7eqneXVaZdTEAcOiLzwR-IZQ5hiZKLL72hMgtRyDli3K7jv0e85hfIpJ_HfZz1KaOQy8qbi7g9pynaerm3FdcF"/>
-</div>
-</div>
-<!-- Event Card 3 -->
-<div class="event-card-hover group flex flex-col md:flex-row gap-md p-md bg-surface-container-lowest rounded-xl border border-outline/10 overflow-hidden">
-<div class="flex-shrink-0 flex flex-col items-center justify-center w-24 h-24 bg-primary-container text-on-primary-container rounded-xl">
-<span class="font-label-caps text-label-caps uppercase opacity-80">Nov</span>
-<span class="font-headline-md text-3xl font-bold">12</span>
-</div>
-<div class="flex-grow space-y-sm">
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md text-primary">Youth Climate Meeting</h3>
-<div class="flex flex-wrap gap-md mt-1 text-on-surface-variant font-body-md">
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">schedule</span>
-<span>05:00 PM - 06:30 PM</span>
-</div>
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">location_on</span>
-<span data-location="Student Union Building">Student Union Building</span>
-</div>
-</div>
-</div>
-</div>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed">
-                            Strategy session for our upcoming local language translation drive. We'll be discussing how to translate key climate terminology into Twi and other local languages for wider accessibility.
-                        </p>
-<div class="flex items-center gap-sm pt-sm">
-<button class="px-xl py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-all font-bold shadow-sm">Register</button>
-<button class="px-md py-2 border border-primary text-primary rounded-full hover:bg-primary/5 transition-all">Details</button>
-</div>
-</div>
-<div class="hidden lg:block w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="A group of young university students sitting in a circle in a brightly lit, modern student lounge. They are engaged in a passionate discussion, with notebooks and tablets open. The mood is collaborative and energetic. Touches of emerald green in their clothing or accessories mirror the brand's primary color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjBwPDe4N1wNBWHvEMDlZ9BzTqvNx7soG9FbDe_TNt1TMIpZXXQ-PqvfgboSZO5ZXnwvqthUMFW4_yHNQg-cnCsXmyjrUSKseLNN_fF43rSO1iKaYXM77o4mksPo8Mm-_CqqETqFpxgLdJLMApd_svm207wPL7gO4eh1lKhj_NoGx2KfMkFxlHp65hh8vbFOaWm7rHCdr_ohqOXbOL1HX3QiQ2UO4gLSFr8c0ZNn81jVm36pJccADhOYYoWiynEY9srWe9vQdXN7Q4"/>
-</div>
-</div>
-<!-- Event Card 4 -->
-<div class="event-card-hover group flex flex-col md:flex-row gap-md p-md bg-surface-container-lowest rounded-xl border border-outline/10 overflow-hidden">
-<div class="flex-shrink-0 flex flex-col items-center justify-center w-24 h-24 bg-primary-container text-on-primary-container rounded-xl">
-<span class="font-label-caps text-label-caps uppercase opacity-80">Dec</span>
-<span class="font-headline-md text-3xl font-bold">01</span>
-</div>
-<div class="flex-grow space-y-sm">
-<div class="flex justify-between items-start">
-<div>
-<h3 class="font-headline-md text-headline-md text-primary">Bio-Diversity Nature Walk</h3>
-<div class="flex flex-wrap gap-md mt-1 text-on-surface-variant font-body-md">
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">schedule</span>
-<span>07:30 AM - 10:00 AM</span>
-</div>
-<div class="flex items-center gap-1">
-<span class="material-symbols-outlined text-lg">location_on</span>
-<span data-location="Wewe River Trail">Wewe River Trail</span>
-</div>
-</div>
-</div>
-</div>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed">
-                            A guided educational walk exploring local flora and fauna along the Wewe River. Perfect for biology enthusiasts and anyone looking to reconnect with the natural beauty of our campus.
-                        </p>
-<div class="flex items-center gap-sm pt-sm">
-<button class="px-xl py-2 bg-primary text-on-primary rounded-full hover:bg-primary/90 transition-all font-bold shadow-sm">Register</button>
-<button class="px-md py-2 border border-primary text-primary rounded-full hover:bg-primary/5 transition-all">Details</button>
-</div>
-</div>
-<div class="hidden lg:block w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
-<img class="w-full h-full object-cover" data-alt="A tranquil view of a wooden trail winding through a dense, sun-dappled tropical forest. Morning mist hangs softly over a small river in the background. The scene is incredibly peaceful, with a focus on biodiversity—various ferns, exotic birds, and ancient trees. The aesthetic is grounded and biophilic, with rich textures and earthy colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb9gtLUSuSJLwEHG6INbrPhMGMlrQRl_ihxk8aVmhc6CBb2neGUGV_imTGFsJhlMiwHHrNtcW1f3b1Djk6LNU3QCxnai4N9-gbxDknyjewcYDAk3ERMMRs6paA2bS355yR00zJPsqoyskOYDc5GPf6BjOcEbkVgqvHCv157ynTOiMhOEuKUTzrTRAVj0aqMeuLU6B_TNLik7iVrGdXGNxf8y02xGL0DxYcbMDyLz8F9EwcDkGcomIY75FFqUP0djqoDSFeVyidT-mj"/>
-</div>
-</div>
+<div id="events-list" class="space-y-lg">
+<p class="text-center text-on-surface-variant py-8">Loading events…</p>
 </div>
 </section>
 <!-- Newsletter / CTA -->
@@ -314,10 +179,10 @@
 <div class="relative z-10">
 <h2 class="font-display-lg text-display-lg-mobile md:text-headline-md">Can't find what you're looking for?</h2>
 <p class="max-w-xl mx-auto opacity-90">Sign up for our newsletter to get monthly updates on new events, workshops, and volunteer opportunities directly in your inbox.</p>
-<div class="mt-lg flex flex-col md:flex-row justify-center items-center gap-sm max-w-lg mx-auto">
-<input class="w-full px-md py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-white/40 focus:border-transparent outline-none" placeholder="Enter your email" type="email"/>
-<button class="w-full md:w-auto px-lg py-3 bg-white text-primary font-bold rounded-full hover:bg-on-primary-container transition-all">Subscribe</button>
-</div>
+<form id="newsletter-form" class="mt-lg flex flex-col md:flex-row justify-center items-center gap-sm max-w-lg mx-auto">
+<input required class="w-full px-md py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/60 focus:ring-2 focus:ring-white/40 focus:border-transparent outline-none" placeholder="Enter your email" type="email"/>
+<button type="submit" class="w-full md:w-auto px-lg py-3 bg-white text-primary font-bold rounded-full hover:bg-on-primary-container transition-all">Subscribe</button>
+</form>
 </div>
 <!-- Abstract organic shape for background -->
 <div class="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-64 h-64 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
@@ -350,19 +215,9 @@
             btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
         });
 
-        // Simple filtering simulation
-        const filterButtons = document.querySelectorAll('button.rounded-full');
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                if(this.parentElement.classList.contains('flex-wrap') || this.parentElement.classList.contains('overflow-x-auto')) {
-                    this.parentElement.querySelectorAll('button').forEach(b => {
-                        b.classList.remove('bg-primary', 'text-on-primary');
-                        b.classList.add('bg-surface-container-high', 'text-on-surface');
-                    });
-                    this.classList.add('bg-primary', 'text-on-primary');
-                    this.classList.remove('bg-surface-container-high', 'text-on-surface');
-                }
-            });
-        });
     </script>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/site.js"></script>
+<script src="js/events.js"></script>
 </body></html>

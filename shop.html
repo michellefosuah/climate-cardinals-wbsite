@@ -98,65 +98,10 @@
       }
     </script>
 <script>
-    // Simple cart management
-    function initializeCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        updateCartCount();
-    }
-
-    function addToCart(productName, price, event) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const existingItem = cart.find(item => item.name === productName);
-        
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ name: productName, price: price, quantity: 1 });
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        showCartFeedback(event.target.closest('button') || event.target.closest('a'));
-    }
-
-    function updateCartCount() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const count = cart.reduce((total, item) => total + item.quantity, 0);
-        const badge = document.getElementById('cart-badge');
-        if (badge) {
-            if (count > 0) {
-                badge.textContent = count;
-                badge.style.display = 'flex';
-            } else {
-                badge.style.display = 'none';
-            }
-        }
-    }
-
-    function showCartFeedback(element) {
-        if (!element) return;
-        const originalHTML = element.innerHTML;
-        const originalColor = element.style.backgroundColor;
-        
-        element.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Added to Cart';
-        element.style.backgroundColor = '#acf847';
-        element.style.color = '#102000';
-        
-        setTimeout(() => {
-            element.innerHTML = originalHTML;
-            element.style.backgroundColor = originalColor;
-            element.style.color = '';
-        }, 2000);
-    }
-
+    // Cart management now lives in js/api.js + js/shop.js (loaded at page end).
     function goToCart() {
         window.location.href = 'cart.html';
     }
-
-    window.addEventListener('load', initializeCart);
 </script>
 <style>
         .material-symbols-outlined {
@@ -193,7 +138,7 @@
 </nav>
 <div class="flex items-center gap-md">
 <div class="relative hidden sm:block">
-<input class="bg-surface-container-low border-outline/20 rounded-full px-md py-2 text-body-md w-64 focus:ring-2 focus:ring-tertiary-fixed outline-none" placeholder="Search merch..." type="text"/>
+<input id="shop-search" class="bg-surface-container-low border-outline/20 rounded-full px-md py-2 text-body-md w-64 focus:ring-2 focus:ring-tertiary-fixed outline-none" placeholder="Search merch..." type="text"/>
 <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
 </div>
 <button class="text-primary hover:scale-95 transition-transform duration-150">
@@ -226,104 +171,26 @@ Shop Best Sellers <span class="material-symbols-outlined">arrow_forward</span>
 <!-- Categories Bar -->
 <section class="mb-lg overflow-x-auto">
 <div class="flex gap-md pb-4 min-w-max">
-<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold flex items-center gap-2">
+<button data-category="" class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold flex items-center gap-2">
 <span class="material-symbols-outlined" data-weight="fill">grid_view</span> All Items
 </button>
-<button class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
+<button data-category="APPAREL" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
 <span class="material-symbols-outlined">checkroom</span> Apparel
 </button>
-<button class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
+<button data-category="STICKERS" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
 <span class="material-symbols-outlined">eco</span> Stickers
 </button>
-<button class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
+<button data-category="ACCESSORIES" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
 <span class="material-symbols-outlined">local_mall</span> Accessories
 </button>
-<button class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
-<span class="material-symbols-outlined">new_releases</span> New Arrivals
+<button data-category="DRINKWARE" class="bg-surface-container hover:bg-surface-container-high transition-colors px-6 py-3 rounded-full font-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined">local_cafe</span> Drinkware
 </button>
 </div>
 </section>
 <!-- Product Grid -->
-<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
-<!-- Product 1: Rooted Tee -->
-<div class="group relative flex flex-col h-full">
-<div class="relative aspect-square rounded-[24px] overflow-hidden bg-surface-container-low mb-md border border-outline/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6vaU5tEJlV8hbsAdKXvsfQMHtpt6CrfDZ1UWFDfed1iiz5gnbzldpkdnnldlv5eiNNONv593djX5zA7Virtp58Qcm0vvFc8vjDccSlEiZd1BR2yol1u-OKT5ml9LQmRUZvfA26yL_SCUHzZjpHP_yUM4CMG9pbrtUS3R5JP1jVSy7Zyq5lpyuqn686aKPrl_TMUxS9p6W_Vgv8E-mULwdFtiPP_GRGbs8kmDEKJgRgXzDzZSiHG9gZuqKjSpLp844ezgkOFwo9klz"/>
-<div class="absolute top-4 left-4 bg-primary text-on-primary text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Organic Cotton</div>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-on-surface text-surface rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-<span class="material-symbols-outlined">favorite</span>
-</button>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between items-start mb-1">
-<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Rooted Tee</h3>
-<span class="font-bold text-primary">GHS 120</span>
-</div>
-<p class="text-on-surface-variant text-sm mb-md line-clamp-2">Breathable, sustainably sourced cotton with water-based eco-ink printing.</p>
-</div>
-<button onclick="addToCart('Rooted Tee', 120, event)" class="w-full bg-primary text-on-primary py-3 rounded-full font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
-</button>
-</div>
-<!-- Product 2: Cardinal Tote -->
-<div class="group relative flex flex-col h-full">
-<div class="relative aspect-square rounded-[24px] overflow-hidden bg-surface-container-low mb-md border border-outline/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm3MqD4TPSkbwVN2xaCWLpRZrcvFsscOeqNBdGNEdnm4kLD1jVjxJj6DdpSN04uxvvUQRD0B7YlGS31W1rAuuUAWZ3UHJYtbfIS25v_qsr3UY418JfK9s-tAYi5dtkFP6m3IieVDcgs6hIgQBDqZwMvz2A3xHokAXveenM3UpQUJ2GlVHw9dtwIYDAiCCcMlFbtd70nOR8otxfV42PuFzpnbm_1uRRVktUIEqJXuJV2gGg-NeoQku4uuVtShRzgv99Y2ZecWEvT5Co"/>
-<div class="absolute top-4 left-4 bg-secondary text-on-secondary text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Best Seller</div>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-on-surface text-surface rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-<span class="material-symbols-outlined">favorite</span>
-</button>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between items-start mb-1">
-<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Cardinal Tote Bag</h3>
-<span class="font-bold text-primary">GHS 85</span>
-</div>
-<p class="text-on-surface-variant text-sm mb-md line-clamp-2">Extra-durable canvas for your daily essentials and grocery hauls.</p>
-</div>
-<button onclick="addToCart('Cardinal Tote Bag', 85, event)" class="w-full bg-primary text-on-primary py-3 rounded-full font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
-</button>
-</div>
-<!-- Product 3: Sticker Pack -->
-<div class="group relative flex flex-col h-full">
-<div class="relative aspect-square rounded-[24px] overflow-hidden bg-surface-container-low mb-md border border-outline/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Phr3UfTPE5w0SJdZt3cDRdrrakP7Vw6dKA4jv-zD3U5NIKjcCInHdl_zycqGtC-1VW5Q15mBVAv7Q0JAVsQWkLw66q8KjI0o1gPLCvH_XNOk92f739kj-NGKMPuD-8q6CXZxVMltURyNDhe_mIDL_LvxNM-Y0gA0RzAccpyk7dO6jfDzwsGKUm8KiByaBADE7_aVWs07aTP_51up1ea_fNOTnNosLMkfJP6CWRhyKlC3roUc5iZ5xpvhFIOra8Z2YKgxJAtBO9wc"/>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-on-surface text-surface rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-<span class="material-symbols-outlined">favorite</span>
-</button>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between items-start mb-1">
-<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Climate Justice Pack</h3>
-<span class="font-bold text-primary">GHS 45</span>
-</div>
-<p class="text-on-surface-variant text-sm mb-md line-clamp-2">Waterproof vinyl stickers to deck out your laptop and bottles.</p>
-</div>
-<button onclick="addToCart('Climate Justice Pack', 45, event)" class="w-full bg-primary text-on-primary py-3 rounded-full font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
-</button>
-</div>
-<!-- Product 4: Earth First Mug -->
-<div class="group relative flex flex-col h-full">
-<div class="relative aspect-square rounded-[24px] overflow-hidden bg-surface-container-low mb-md border border-outline/10">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxJBsZvhJXaMurDY4ohlOpSrzn-WSwjbcpsxRuUEHbCQIJizoavKTMG5Kh5yeHfqD-T-CER5IjQHVeEq7W4KqO4yO027hp77LHs3LVrQxx8iL_SRLuQ5X0v3ZEZROvOeFjWZPVCCPB56FVhur0ls_z6PqIlW_UZcz1npgav3PzG3w4-jtEE_YMAGxWpnZjuRR3MbU_yNuTgix85fTEEk6jDay6Y3wzABAsKjc4i7KdUXHfXDKBOi97kXWvQtZBFgnjpnWCgjtZ-Isv"/>
-<div class="absolute top-4 left-4 bg-tertiary text-on-tertiary text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Limited Edition</div>
-<button class="absolute bottom-4 right-4 w-12 h-12 bg-on-surface text-surface rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-<span class="material-symbols-outlined">favorite</span>
-</button>
-</div>
-<div class="flex-grow">
-<div class="flex justify-between items-start mb-1">
-<h3 class="font-headline-md text-body-lg font-bold text-on-surface">Earth First Mug</h3>
-<span class="font-bold text-primary">GHS 60</span>
-</div>
-<p class="text-on-surface-variant text-sm mb-md line-clamp-2">Hand-finished ceramic mug, perfect for your morning brew.</p>
-</div>
-<button onclick="addToCart('Earth First Mug', 60, event)" class="w-full bg-primary text-on-primary py-3 rounded-full font-bold hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-sm">add_shopping_cart</span> Add to Cart
-</button>
-</div>
+<section id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<p class="col-span-full text-center text-on-surface-variant py-12">Loading products…</p>
 </section>
 <!-- Featured Section: Bento Layout -->
 <section class="mt-xl">
@@ -375,4 +242,8 @@ Shop Best Sellers <span class="material-symbols-outlined">arrow_forward</span>
 </div>
 </div>
 </footer>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/site.js"></script>
+<script src="js/shop.js"></script>
 </body></html>

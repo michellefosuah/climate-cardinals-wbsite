@@ -110,93 +110,6 @@
             border: 1px solid rgba(69, 26, 3, 0.1);
         }
     </style>
-<script>
-    const productImages = {
-        'Rooted Tee': 'https://lh3.googleusercontent.com/aida-public/AB6AXuA404ms2WE60M927awfdl0Z25GOMwmHAVnRRKRJKzErFvpPPl5jO3YdrLVaprnOxeijI9cnq0jOr1KcPY6iMcEJEyyRgW2BexTKUQpIt8KyCXq-k1HLwC2F9t_YrBOnHO8sxHv4Zy0hKZsTtIDeOZb8YhDz7ePZb6vVU8KfwrgsSlQRE-pMh9e5E92zZuD0Fit1WXIbvTZifoM8fBbSABUKS1NbzNjmZ9sotd0C039oF0OdHXgRmejItJkvbrcAmPaDWf1tTUJBsbtM',
-        'Cardinal Tote Bag': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDTUD0u3Pd3GGs20dVLbgyLMMaCvtGes4gS3qikgUtKXQ5t2dWr0Is4FQ0TJlKsxqXSUoYe8UmJ9n7SrPyCTGMTzxzOnCE5j4UnhVnFyG6AOXE0ArNmS4SU4WxF-mO3uHYzy7szv69AKt2EEJ3Hh61p3SDyN62wB5qFQ5lNYykkBbbPY610hbf4529ktgUsgS4OXT9yZPijM4AIlLXLSkZg_ejbiknoASqtl6bLWIXSNjHuJ3ykZBE4JBzrwi7QCKtPDER6L-Q5usOr',
-        'Climate Justice Pack': 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1Phr3UfTPE5w0SJdZt3cDRdrrakP7Vw6dKA4jv-zD3U5NIKjcCInHdl_zycqGtC-1VW5Q15mBVAv7Q0JAVsQWkLw66q8KjI0o1gPLCvH_XNOk92f739kj-NGKMPuD-8q6CXZxVMltURyNDhe_mIDL_LvxNM-Y0gA0RzAccpyk7dO6jfDzwsGKUm8KiByaBADE7_aVWs07aTP_51up1ea_fNOTnNosLMkfJP6CWRhyKlC3roUc5iZ5xpvhFIOra8Z2YKgxJAtBO9wc',
-        'Earth First Mug': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxJBsZvhJXaMurDY4ohlOpSrzn-WSwjbcpsxRuUEHbCQIJizoavKTMG5Kh5yeHfqD-T-CER5IjQHVeEq7W4KqO4yO027hp77LHs3LVrQxx8iL_SRLuQ5X0v3ZEZROvOeFjWZPVCCPB56FVhur0ls_z6PqIlW_UZcz1npgav3PzG3w4-jtEE_YMAGxWpnZjuRR3MbU_yNuTgix85fTEEk6jDay6Y3wzABAsKjc4i7KdUXHfXDKBOi97kXWvQtZBFgnjpnWCgjtZ-Isv',
-        'Chapter Tee': 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1Phr3UfTPE5w0SJdZt3cDRdrrakP7Vw6dKA4jv-zD3U5NIKjcCInHdl_zycqGtC-1VW5Q15mBVAv7Q0JAVsQWkLw66q8KjI0o1gPLCvH_XNOk92f739kj-NGKMPuD-8q6CXZxVMltURyNDhe_mIDL_LvxNM-Y0gA0RzAccpyk7dO6jfDzwsGKUm8KiByaBADE7_aVWs07aTP_51up1ea_fNOTnNosLMkfJP6CWRhyKlC3roUc5iZ5xpvhFIOra8Z2YKgxJAtBO9wc'
-    };
-
-    function updateCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const itemsContainer = document.getElementById('cart-items');
-        
-        if (cart.length === 0) {
-            itemsContainer.innerHTML = '<p class="text-center text-on-surface-variant py-lg">Your cart is empty. <a href="shop.html" class="text-primary font-bold hover:underline">Continue shopping</a></p>';
-            updateTotals([]);
-            return;
-        }
-
-        itemsContainer.innerHTML = cart.map((item, index) => `
-            <div class="glass-card rounded-xl p-md flex flex-col sm:flex-row gap-md items-center">
-                <div class="w-full sm:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
-                    <img class="w-full h-full object-cover" src="${productImages[item.name] || 'https://via.placeholder.com/150'}"/>
-                </div>
-                <div class="flex-grow space-y-1">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="font-headline-md text-lg text-primary">${item.name}</h3>
-                            <p class="text-on-surface-variant font-body-md">Premium Item</p>
-                        </div>
-                        <span class="font-bold text-primary">GHS ${item.price}</span>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">
-                            <button onclick="updateQuantity(${index}, -1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
-                                <span class="material-symbols-outlined text-base">remove</span>
-                            </button>
-                            <span class="px-4 font-bold text-primary">${item.quantity}</span>
-                            <button onclick="updateQuantity(${index}, 1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
-                                <span class="material-symbols-outlined text-base">add</span>
-                            </button>
-                        </div>
-                        <button onclick="removeItem(${index})" class="flex items-center gap-1 text-error hover:bg-error/5 px-3 py-1 rounded-full transition-colors">
-                            <span class="material-symbols-outlined text-sm">delete</span>
-                            <span class="text-xs font-bold uppercase tracking-wider">Remove</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-        
-        updateTotals(cart);
-    }
-
-    function updateQuantity(index, change) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart[index].quantity += change;
-        
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCart();
-    }
-
-    function removeItem(index) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCart();
-    }
-
-    function updateTotals(cart) {
-        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const shipping = cart.length > 0 ? 25 : 0;
-        const tax = Math.round(subtotal * 0.05);
-        const total = subtotal + shipping + tax;
-
-        document.getElementById('subtotal').textContent = 'GHS ' + subtotal.toFixed(2);
-        document.getElementById('shipping').textContent = 'GHS ' + shipping.toFixed(2);
-        document.getElementById('tax').textContent = 'GHS ' + tax.toFixed(2);
-        document.getElementById('total').textContent = 'GHS ' + total.toFixed(2);
-    }
-
-    window.addEventListener('load', updateCart);
-</script>
 </head>
 <body class="font-body-md text-on-surface">
 <!-- TopNavBar -->
@@ -303,4 +216,8 @@ CARBON-NEUTRAL SHIPPING
 </div>
 </div>
 </footer>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/site.js"></script>
+<script src="js/cart.js"></script>
 </body></html>
