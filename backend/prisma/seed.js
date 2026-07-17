@@ -30,6 +30,8 @@ const products = [
     category: 'APPAREL',
     badge: 'Organic Cotton',
     stock: 50,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuD6vaU5tEJlV8hbsAdKXvsfQMHtpt6CrfDZ1UWFDfed1iiz5gnbzldpkdnnldlv5eiNNONv593djX5zA7Virtp58Qcm0vvFc8vjDccSlEiZd1BR2yol1u-OKT5ml9LQmRUZvfA26yL_SCUHzZjpHP_yUM4CMG9pbrtUS3R5JP1jVSy7Zyq5lpyuqn686aKPrl_TMUxS9p6W_Vgv8E-mULwdFtiPP_GRGbs8kmDEKJgRgXzDzZSiHG9gZuqKjSpLp844ezgkOFwo9klz',
   },
   {
     name: 'Cardinal Tote Bag',
@@ -38,6 +40,8 @@ const products = [
     category: 'ACCESSORIES',
     badge: 'Best Seller',
     stock: 80,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDTUD0u3Pd3GGs20dVLbgyLMMaCvtGes4gS3qikgUtKXQ5t2dWr0Is4FQ0TJlKsxqXSUoYe8UmJ9n7SrPyCTGMTzxzOnCE5j4UnhVnFyG6AOXE0ArNmS4SU4WxF-mO3uHYzy7szv69AKt2EEJ3Hh61p3SDyN62wB5qFQ5lNYykkBbbPY610hbf4529ktgUsgS4OXT9yZPijM4AIlLXLSkZg_ejbiknoASqtl6bLWIXSNjHuJ3ykZBE4JBzrwi7QCKtPDER6L-Q5usOr',
   },
   {
     name: 'Climate Justice Pack',
@@ -46,6 +50,8 @@ const products = [
     category: 'STICKERS',
     badge: null,
     stock: 200,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuB1Phr3UfTPE5w0SJdZt3cDRdrrakP7Vw6dKA4jv-zD3U5NIKjcCInHdl_zycqGtC-1VW5Q15mBVAv7Q0JAVsQWkLw66q8KjI0o1gPLCvH_XNOk92f739kj-NGKMPuD-8q6CXZxVMltURyNDhe_mIDL_LvxNM-Y0gA0RzAccpyk7dO6jfDzwsGKUm8KiByaBADE7_aVWs07aTP_51up1ea_fNOTnNosLMkfJP6CWRhyKlC3roUc5iZ5xpvhFIOra8Z2YKgxJAtBO9wc',
   },
   {
     name: 'Earth First Mug',
@@ -54,6 +60,8 @@ const products = [
     category: 'DRINKWARE',
     badge: 'Limited Edition',
     stock: 40,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDxJBsZvhJXaMurDY4ohlOpSrzn-WSwjbcpsxRuUEHbCQIJizoavKTMG5Kh5yeHfqD-T-CER5IjQHVeEq7W4KqO4yO027hp77LHs3LVrQxx8iL_SRLuQ5X0v3ZEZROvOeFjWZPVCCPB56FVhur0ls_z6PqIlW_UZcz1npgav3PzG3w4-jtEE_YMAGxWpnZjuRR3MbU_yNuTgix85fTEEk6jDay6Y3wzABAsKjc4i7KdUXHfXDKBOi97kXWvQtZBFgnjpnWCgjtZ-Isv',
   },
   {
     name: 'Stainless Hydrator',
@@ -62,6 +70,8 @@ const products = [
     category: 'DRINKWARE',
     badge: null,
     stock: 35,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBibtMPf2-0mODBwfUA51T1ipTdXnOkopYrL6LrtZqO6HKp5-7d8ml1agX1vCuqs4NQyJwdHDM1Z9Jn-AngaH3SiguunExjzf1zVMjNUvdICpsLA_ASuTkXXXTal07pXTl4959aT-Lnf874oRbfU0DAmWMus9p-FUEx33DUOn6j2UB8EguLYd_T5leOVbiVipmEzcoqGVCt4CoAqRiaGRiISPCz50E7LhwerhYqD6YULqbdTZ0bHGHTNGz4oy5s9xvx8ZcGtF-vvDnw',
   },
 ];
 
@@ -76,6 +86,8 @@ const events = [
     startTime: new Date('2026-10-20T09:00:00Z'),
     endTime: new Date('2026-10-20T12:00:00Z'),
     capacity: 60,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBibtMPf2-0mODBwfUA51T1ipTdXnOkopYrL6LrtZqO6HKp5-7d8ml1agX1vCuqs4NQyJwdHDM1Z9Jn-AngaH3SiguunExjzf1zVMjNUvdICpsLA_ASuTkXXXTal07pXTl4959aT-Lnf874oRbfU0DAmWMus9p-FUEx33DUOn6j2UB8EguLYd_T5leOVbiVipmEzcoqGVCt4CoAqRiaGRiISPCz50E7LhwerhYqD6YULqbdTZ0bHGHTNGz4oy5s9xvx8ZcGtF-vvDnw',
   },
   {
     title: 'Climate Advocacy Seminar',
@@ -86,6 +98,8 @@ const events = [
     startTime: new Date('2026-11-05T14:00:00Z'),
     endTime: new Date('2026-11-05T16:30:00Z'),
     capacity: 200,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAarqH848UL6xgTV5ysihNq20i8_yP2O2GeHj73CqFk8__avqj__AU36_-FCVWf-TE9OxNfeUu5aeL62oZ3ljtb0JrmbR5Qy9R5Aw-layfyZIpdBNAsC85Mv_sJmLzWZpNg7ONe5gd0rbBMUlfpg1brp9qHdFIqZ1PFF6zLM8MnwtXZTLAGG7Sb7g7eqneXVaZdTEAcOiLzwR-IZQ5hiZKLL72hMgtRyDli3K7jv0e85hfIpJ_HfZz1KaOQy8qbi7g9pynaerm3FdcF',
   },
   {
     title: 'Youth Climate Meeting',
@@ -96,6 +110,8 @@ const events = [
     startTime: new Date('2026-11-12T17:00:00Z'),
     endTime: new Date('2026-11-12T18:30:00Z'),
     capacity: 40,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBjBwPDe4N1wNBWHvEMDlZ9BzTqvNx7soG9FbDe_TNt1TMIpZXXQ-PqvfgboSZO5ZXnwvqthUMFW4_yHNQg-cnCsXmyjrUSKseLNN_fF43rSO1iKaYXM77o4mksPo8Mm-_CqqETqFpxgLdJLMApd_svm207wPL7gO4eh1lKhj_NoGx2KfMkFxlHp65hh8vbFOaWm7rHCdr_ohqOXbOL1HX3QiQ2UO4gLSFr8c0ZNn81jVm36pJccADhOYYoWiynEY9srWe9vQdXN7Q4',
   },
   {
     title: 'Bio-Diversity Nature Walk',
@@ -106,6 +122,8 @@ const events = [
     startTime: new Date('2026-12-01T07:30:00Z'),
     endTime: new Date('2026-12-01T10:00:00Z'),
     capacity: 30,
+    imageUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCb9gtLUSuSJLwEHG6INbrPhMGMlrQRl_ihxk8aVmhc6CBb2neGUGV_imTGFsJhlMiwHHrNtcW1f3b1Djk6LNU3QCxnai4N9-gbxDknyjewcYDAk3ERMMRs6paA2bS355yR00zJPsqoyskOYDc5GPf6BjOcEbkVgqvHCv157ynTOiMhOEuKUTzrTRAVj0aqMeuLU6B_TNLik7iVrGdXGNxf8y02xGL0DxYcbMDyLz8F9EwcDkGcomIY75FFqUP0djqoDSFeVyidT-mj',
   },
 ];
 
