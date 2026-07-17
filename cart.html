@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Cart | Climate Cardinals KNUST Merch Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#0b3e50",
+                        "primary": "#154212",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#acf847",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#acf847",
+                        "tertiary-fixed": "#bee9ff",
+                        "on-primary-container": "#9dd090",
+                        "surface-container-low": "#fff1eb",
+                        "inverse-on-surface": "#ffede6",
+                        "surface-container-high": "#ffe2d7",
+                        "inverse-surface": "#51230a",
+                        "on-surface": "#351000",
+                        "surface-tint": "#3b6934",
+                        "tertiary-container": "#295568",
+                        "primary-container": "#2d5a27",
+                        "outline-variant": "#c2c9bb",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#bcf0ae",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#42493e",
+                        "surface-bright": "#fff8f6",
+                        "background": "#fff8f6",
+                        "surface-container": "#ffeae1",
+                        "on-background": "#351000",
+                        "surface-variant": "#ffdbcc",
+                        "on-tertiary-fixed": "#001f2a",
+                        "outline": "#72796e",
+                        "surface-container-highest": "#ffdbcc",
+                        "on-tertiary-container": "#9dc9df",
+                        "on-secondary-fixed": "#102000",
+                        "on-primary-fixed": "#002201",
+                        "surface": "#fff8f6",
+                        "on-primary-fixed-variant": "#23501e",
+                        "inverse-primary": "#a1d494",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#457000",
+                        "on-tertiary-fixed-variant": "#1e4c5f",
+                        "primary-fixed-dim": "#a1d494",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#a1cde3",
+                        "surface-dim": "#ffd0bc",
+                        "secondary-fixed-dim": "#91db2a",
+                        "secondary": "#416900",
+                        "on-secondary-fixed-variant": "#304f00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "24px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fff8f6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(69, 26, 3, 0.1);
+        }
+    </style>
+<script>
+    const productImages = {
+        'Rooted Tee': 'https://lh3.googleusercontent.com/aida-public/AB6AXuA404ms2WE60M927awfdl0Z25GOMwmHAVnRRKRJKzErFvpPPl5jO3YdrLVaprnOxeijI9cnq0jOr1KcPY6iMcEJEyyRgW2BexTKUQpIt8KyCXq-k1HLwC2F9t_YrBOnHO8sxHv4Zy0hKZsTtIDeOZb8YhDz7ePZb6vVU8KfwrgsSlQRE-pMh9e5E92zZuD0Fit1WXIbvTZifoM8fBbSABUKS1NbzNjmZ9sotd0C039oF0OdHXgRmejItJkvbrcAmPaDWf1tTUJBsbtM',
+        'Cardinal Tote Bag': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDTUD0u3Pd3GGs20dVLbgyLMMaCvtGes4gS3qikgUtKXQ5t2dWr0Is4FQ0TJlKsxqXSUoYe8UmJ9n7SrPyCTGMTzxzOnCE5j4UnhVnFyG6AOXE0ArNmS4SU4WxF-mO3uHYzy7szv69AKt2EEJ3Hh61p3SDyN62wB5qFQ5lNYykkBbbPY610hbf4529ktgUsgS4OXT9yZPijM4AIlLXLSkZg_ejbiknoASqtl6bLWIXSNjHuJ3ykZBE4JBzrwi7QCKtPDER6L-Q5usOr',
+        'Climate Justice Pack': 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1Phr3UfTPE5w0SJdZt3cDRdrrakP7Vw6dKA4jv-zD3U5NIKjcCInHdl_zycqGtC-1VW5Q15mBVAv7Q0JAVsQWkLw66q8KjI0o1gPLCvH_XNOk92f739kj-NGKMPuD-8q6CXZxVMltURyNDhe_mIDL_LvxNM-Y0gA0RzAccpyk7dO6jfDzwsGKUm8KiByaBADE7_aVWs07aTP_51up1ea_fNOTnNosLMkfJP6CWRhyKlC3roUc5iZ5xpvhFIOra8Z2YKgxJAtBO9wc',
+        'Earth First Mug': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxJBsZvhJXaMurDY4ohlOpSrzn-WSwjbcpsxRuUEHbCQIJizoavKTMG5Kh5yeHfqD-T-CER5IjQHVeEq7W4KqO4yO027hp77LHs3LVrQxx8iL_SRLuQ5X0v3ZEZROvOeFjWZPVCCPB56FVhur0ls_z6PqIlW_UZcz1npgav3PzG3w4-jtEE_YMAGxWpnZjuRR3MbU_yNuTgix85fTEEk6jDay6Y3wzABAsKjc4i7KdUXHfXDKBOi97kXWvQtZBFgnjpnWCgjtZ-Isv',
+        'Chapter Tee': 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1Phr3UfTPE5w0SJdZt3cDRdrrakP7Vw6dKA4jv-zD3U5NIKjcCInHdl_zycqGtC-1VW5Q15mBVAv7Q0JAVsQWkLw66q8KjI0o1gPLCvH_XNOk92f739kj-NGKMPuD-8q6CXZxVMltURyNDhe_mIDL_LvxNM-Y0gA0RzAccpyk7dO6jfDzwsGKUm8KiByaBADE7_aVWs07aTP_51up1ea_fNOTnNosLMkfJP6CWRhyKlC3roUc5iZ5xpvhFIOra8Z2YKgxJAtBO9wc'
+    };
+
+    function updateCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const itemsContainer = document.getElementById('cart-items');
+        
+        if (cart.length === 0) {
+            itemsContainer.innerHTML = '<p class="text-center text-on-surface-variant py-lg">Your cart is empty. <a href="shop.html" class="text-primary font-bold hover:underline">Continue shopping</a></p>';
+            updateTotals([]);
+            return;
+        }
+
+        itemsContainer.innerHTML = cart.map((item, index) => `
+            <div class="glass-card rounded-xl p-md flex flex-col sm:flex-row gap-md items-center">
+                <div class="w-full sm:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" src="${productImages[item.name] || 'https://via.placeholder.com/150'}"/>
+                </div>
+                <div class="flex-grow space-y-1">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-headline-md text-lg text-primary">${item.name}</h3>
+                            <p class="text-on-surface-variant font-body-md">Premium Item</p>
+                        </div>
+                        <span class="font-bold text-primary">GHS ${item.price}</span>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">
+                            <button onclick="updateQuantity(${index}, -1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+                                <span class="material-symbols-outlined text-base">remove</span>
+                            </button>
+                            <span class="px-4 font-bold text-primary">${item.quantity}</span>
+                            <button onclick="updateQuantity(${index}, 1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+                                <span class="material-symbols-outlined text-base">add</span>
+                            </button>
+                        </div>
+                        <button onclick="removeItem(${index})" class="flex items-center gap-1 text-error hover:bg-error/5 px-3 py-1 rounded-full transition-colors">
+                            <span class="material-symbols-outlined text-sm">delete</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">Remove</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        updateTotals(cart);
+    }
+
+    function updateQuantity(index, change) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart[index].quantity += change;
+        
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+    }
+
+    function removeItem(index) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+    }
+
+    function updateTotals(cart) {
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const shipping = cart.length > 0 ? 25 : 0;
+        const tax = Math.round(subtotal * 0.05);
+        const total = subtotal + shipping + tax;
+
+        document.getElementById('subtotal').textContent = 'GHS ' + subtotal.toFixed(2);
+        document.getElementById('shipping').textContent = 'GHS ' + shipping.toFixed(2);
+        document.getElementById('tax').textContent = 'GHS ' + tax.toFixed(2);
+        document.getElementById('total').textContent = 'GHS ' + total.toFixed(2);
+    }
+
+    window.addEventListener('load', updateCart);
+</script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopNavBar -->
+<nav class="w-full top-0 bg-surface border-b border-on-surface/10 sticky z-50">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-primary"><a href="main.html">Climate Cardinals KNUST</a></span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md" href="main.html#about">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md" href="main.html#team">Team</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md" href="impact.html">Impact</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md" href="shop.html">Merch</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-gutter py-lg min-h-screen">
+<!-- Header -->
+<header class="mb-lg">
+<h1 class="font-display-lg text-display-lg text-primary mb-2">Your Cart</h1>
+<a class="inline-flex items-center gap-2 text-primary hover:underline group" href="shop.html">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="font-label-caps text-label-caps">Continue Shopping</span>
+</a>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md items-start">
+<!-- Items Section -->
+<section class="lg:col-span-8 space-y-md">
+<div id="cart-items">
+<!-- Items will be dynamically rendered here -->
+</div>
+<!-- Impact Note -->
+<div class="bg-surface-container-low rounded-xl p-md border border-primary/10 flex gap-4 items-start">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Your Impact Matters</h4>
+<p class="font-body-md text-on-surface-variant text-sm">Every purchase directly funds local reforestation efforts in the Ashanti Region and supports our mission to translate climate research.</p>
+</div>
+</div>
+</section>
+<!-- Summary Sidebar -->
+<aside class="lg:col-span-4 sticky top-24">
+<div class="glass-card rounded-2xl p-lg space-y-6">
+<h2 class="font-headline-md text-primary">Order Summary</h2>
+<div class="space-y-4 font-body-md">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-bold text-on-surface" id="subtotal">GHS 0.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Estimated Shipping</span>
+<span class="font-bold text-on-surface" id="shipping">GHS 0.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Tax</span>
+<span class="font-bold text-on-surface" id="tax">GHS 0.00</span>
+</div>
+<div class="h-px bg-outline-variant/30 my-4"></div>
+<div class="flex justify-between text-lg">
+<span class="font-bold text-primary">Total</span>
+<span class="font-bold text-primary" id="total">GHS 0.00</span>
+</div>
+</div>
+<a href="checkout.html" class="w-full bg-primary text-on-primary py-4 rounded-full font-bold text-lg hover:bg-primary-container transition-all duration-300 transform active:scale-95 shadow-lg shadow-primary/10 flex items-center justify-center gap-2">
+<span>Proceed to Checkout</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<div class="flex items-center gap-2 justify-center text-on-surface-variant text-xs font-label-caps opacity-70">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Secure SSL Checkout</span>
+</div>
+</div>
+<!-- Environmental Tip -->
+<div class="mt-md p-md bg-tertiary-container/10 rounded-xl border border-tertiary/10">
+<p class="text-xs text-tertiary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+CARBON-NEUTRAL SHIPPING
+</p>
+<p class="text-xs text-on-tertiary-container mt-1">We offset all emissions from your delivery through certified carbon credits.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-low border-t border-on-surface/5 mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter py-md w-full max-w-container-max mx-auto gap-md">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-label-caps text-label-caps tracking-widest text-secondary uppercase">Climate Cardinals KNUST</span>
+<p class="font-body-md text-on-surface-variant text-sm">© 2024 Climate Cardinals KNUST. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-2">
+<a class="font-body-md text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-body-md text-on-surface-variant hover:underline transition-all" href="main.html#contact">Contact Us</a>
+<a class="font-body-md text-on-surface-variant hover:underline transition-all" href="main.html">Global Network</a>
+</div>
+</div>
+</footer>
+</body></html>
