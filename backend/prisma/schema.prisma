@@ -1,0 +1,291 @@
+// Prisma schema for the Climate Cardinals KNUST backend.
+// Docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ProductCategory {
+  APPAREL
+  STICKERS
+  ACCESSORIES
+  DRINKWARE
+  OTHER
+}
+
+enum EventCategory {
+  WORKSHOP
+  SEMINAR
+  MEETING
+  NATURE_WALK
+  OTHER
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FULFILLED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CARD
+  MOMO
+}
+
+enum TeamTier {
+  LEADERSHIP
+  FELLOW
+}
+
+// ---------------------------------------------------------------------------
+// Users & authentication
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  cartItems          CartItem[]
+  orders             Order[]
+  eventRegistrations EventRegistration[]
+  donations          Donation[]
+
+  @@map("users")
+}
+
+// ---------------------------------------------------------------------------
+// Shop: products, cart, orders
+// ---------------------------------------------------------------------------
+
+model Product {
+  id          String          @id @default(uuid())
+  name        String
+  slug        String          @unique
+  description String
+  // Price in Ghanaian cedi (GHS). Decimal avoids floating point money errors.
+  price       Decimal         @db.Decimal(10, 2)
+  category    ProductCategory @default(OTHER)
+  imageUrl    String?
+  badge       String? // e.g. "Best Seller", "Organic Cotton", "Limited Edition"
+  stock       Int             @default(0)
+  isActive    Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+
+  @@index([category])
+  @@map("products")
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  userId    String
+  productId String
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  // A user has at most one row per product; quantity tracks the count.
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+model Order {
+  id            String        @id @default(uuid())
+  // Optional user link: guests can check out without an account.
+  userId        String?
+  // Contact + shipping snapshot (from the checkout form).
+  fullName      String
+  email         String
+  phone         String?
+  address       String
+  city          String
+  region        String
+  // Money breakdown mirrors the cart/checkout summary.
+  subtotal      Decimal       @db.Decimal(10, 2)
+  shipping      Decimal       @db.Decimal(10, 2)
+  tax           Decimal       @db.Decimal(10, 2)
+  donation      Decimal       @default(0) @db.Decimal(10, 2)
+  total         Decimal       @db.Decimal(10, 2)
+  paymentMethod PaymentMethod @default(CARD)
+  status        OrderStatus   @default(PENDING)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  user  User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  items OrderItem[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  productId String?
+  // Snapshot of product details at purchase time so historical orders are stable.
+  name      String
+  unitPrice Decimal @db.Decimal(10, 2)
+  quantity  Int
+
+  order   Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  @@map("order_items")
+}
+
+// ---------------------------------------------------------------------------
+// Events & registrations
+// ---------------------------------------------------------------------------
+
+model Event {
+  id          String        @id @default(uuid())
+  title       String
+  slug        String        @unique
+  description String
+  category    EventCategory @default(OTHER)
+  location    String
+  startTime   DateTime
+  endTime     DateTime?
+  capacity    Int? // null = unlimited
+  imageUrl    String?
+  isPublished Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  registrations EventRegistration[]
+
+  @@index([category])
+  @@index([startTime])
+  @@map("events")
+}
+
+model EventRegistration {
+  id        String   @id @default(uuid())
+  eventId   String
+  userId    String?
+  name      String
+  email     String
+  phone     String?
+  createdAt DateTime @default(now())
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user  User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Prevent the same email registering twice for one event.
+  @@unique([eventId, email])
+  @@map("event_registrations")
+}
+
+// ---------------------------------------------------------------------------
+// Engagement: newsletter, contact, donations, volunteers
+// ---------------------------------------------------------------------------
+
+model NewsletterSubscriber {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  isSubscribed Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  unsubscribedAt DateTime?
+
+  @@map("newsletter_subscribers")
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  isHandled Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("contact_messages")
+}
+
+model Donation {
+  id        String   @id @default(uuid())
+  userId    String?
+  name      String
+  email     String
+  amount    Decimal  @db.Decimal(10, 2)
+  project   String? // e.g. "Mangrove restoration", "1000-Tree Initiative"
+  message   String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("donations")
+}
+
+model VolunteerApplication {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  interest  String? // area of interest, e.g. "Translation", "Tree Planting"
+  message   String?
+  status    String   @default("NEW") // NEW | REVIEWING | ACCEPTED | DECLINED
+  createdAt DateTime @default(now())
+
+  @@map("volunteer_applications")
+}
+
+// ---------------------------------------------------------------------------
+// Editable site content: team & impact stats
+// ---------------------------------------------------------------------------
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  name      String
+  role      String
+  bio       String?
+  imageUrl  String?
+  tier      TeamTier @default(FELLOW)
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("team_members")
+}
+
+model ImpactStat {
+  id          String   @id @default(uuid())
+  label       String
+  value       String // stored as string to allow "500+", "25+ Languages", etc.
+  description String?
+  icon        String? // material symbol name
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("impact_stats")
+}
