@@ -1,0 +1,299 @@
+/* ==========================================================================
+   Climate Cardinals KNUST — shared design system
+   Climate-centered visual language: forest greens, leaf/lime accents,
+   warm cream surfaces. Provides the shared header, footer and reusable
+   components rendered by js/chrome.js on every page.
+   ========================================================================== */
+
+:root {
+  /* Brand palette */
+  --cc-forest: #0f3d17;
+  --cc-forest-deep: #0a2c11;
+  --cc-primary: #17501a;
+  --cc-primary-600: #1f6a26;
+  --cc-leaf: #3f8f3a;
+  --cc-lime: #acf847;
+  --cc-lime-soft: #d7f9a8;
+  --cc-sky: #0b3e50;
+  --cc-sky-soft: #bee9ff;
+
+  /* Surfaces */
+  --cc-cream: #fbfbf4;
+  --cc-surface: #fff8f6;
+  --cc-sand: #fff1eb;
+  --cc-card: #ffffff;
+
+  /* Ink */
+  --cc-ink: #1c2a19;
+  --cc-muted: #566052;
+  --cc-on-forest: #eef7ea;
+  --cc-on-forest-muted: #b6cbb0;
+
+  /* Lines & effects */
+  --cc-border: rgba(15, 61, 23, 0.12);
+  --cc-border-strong: rgba(15, 61, 23, 0.24);
+  --cc-shadow-sm: 0 1px 3px rgba(15, 61, 23, 0.08);
+  --cc-shadow: 0 8px 30px rgba(15, 61, 23, 0.10);
+  --cc-shadow-lg: 0 20px 50px rgba(15, 61, 23, 0.16);
+
+  --cc-radius: 14px;
+  --cc-radius-lg: 24px;
+  --cc-radius-full: 9999px;
+  --cc-container: 1200px;
+
+  --cc-font-head: "Plus Jakarta Sans", system-ui, sans-serif;
+  --cc-font-body: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+}
+
+/* ---- utilities ---------------------------------------------------------- */
+.cc-container {
+  width: 100%;
+  max-width: var(--cc-container);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+.cc-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.cc-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(251, 251, 244, 0.82);
+  backdrop-filter: saturate(1.4) blur(12px);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--cc-border);
+}
+.cc-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 68px;
+}
+
+/* Logo — compact wordmark, fixes the long-title header issue */
+.cc-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.cc-logo__mark {
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(140deg, var(--cc-primary), var(--cc-leaf));
+  display: grid; place-items: center;
+  color: #fff;
+  box-shadow: var(--cc-shadow-sm);
+}
+.cc-logo__mark .material-symbols-outlined { font-size: 22px; }
+.cc-logo__text { display: flex; flex-direction: column; line-height: 1; }
+.cc-logo__name {
+  font-family: var(--cc-font-head);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--cc-primary);
+  letter-spacing: -0.01em;
+}
+.cc-logo__tag {
+  font-family: var(--cc-font-head);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cc-leaf);
+  margin-top: 2px;
+}
+
+/* Nav */
+.cc-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-inline: auto;
+}
+.cc-nav a {
+  font-family: var(--cc-font-body);
+  font-size: 15px;
+  color: var(--cc-muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--cc-radius-full);
+  transition: color .2s, background .2s;
+  white-space: nowrap;
+}
+.cc-nav a:hover { color: var(--cc-primary); background: rgba(23, 80, 26, 0.06); }
+.cc-nav a.is-active { color: var(--cc-primary); font-weight: 700; background: rgba(172, 248, 71, 0.28); }
+
+/* Actions (account + cart) */
+.cc-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.cc-icon-btn {
+  position: relative;
+  width: 42px; height: 42px;
+  border: none; background: transparent;
+  border-radius: var(--cc-radius-full);
+  color: var(--cc-primary);
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: background .2s, transform .12s;
+}
+.cc-icon-btn:hover { background: rgba(23, 80, 26, 0.08); }
+.cc-icon-btn:active { transform: scale(0.92); }
+.cc-icon-btn .material-symbols-outlined { font-size: 26px; }
+.cc-cart-badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  background: var(--cc-lime);
+  color: var(--cc-forest-deep);
+  font-family: var(--cc-font-head);
+  font-size: 11px; font-weight: 800;
+  border-radius: var(--cc-radius-full);
+  display: none; align-items: center; justify-content: center;
+  border: 2px solid var(--cc-cream);
+}
+
+/* Mobile menu */
+.cc-burger { display: none; }
+.cc-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 24px 20px;
+  background: var(--cc-cream);
+  border-bottom: 1px solid var(--cc-border);
+}
+.cc-mobile a {
+  font-family: var(--cc-font-body);
+  color: var(--cc-ink);
+  text-decoration: none;
+  padding: 12px 8px;
+  border-radius: 10px;
+  border-bottom: 1px solid var(--cc-border);
+}
+.cc-mobile a:last-child { border-bottom: none; }
+.cc-mobile.is-open { display: flex; }
+
+@media (max-width: 860px) {
+  .cc-nav { display: none; }
+  .cc-burger { display: grid; }
+}
+
+/* ==========================================================================
+   FOOTER  — rich, consistent, climate-anchored
+   ========================================================================== */
+.cc-footer {
+  background: var(--cc-forest);
+  color: var(--cc-on-forest);
+  margin-top: 64px;
+}
+.cc-footer a { color: var(--cc-on-forest-muted); text-decoration: none; transition: color .2s; }
+.cc-footer a:hover { color: var(--cc-lime); }
+
+.cc-footer__top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  padding: 56px 0 40px;
+}
+.cc-footer__brand-name {
+  font-family: var(--cc-font-head);
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  margin: 14px 0 10px;
+}
+.cc-footer__blurb {
+  font-family: var(--cc-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--cc-on-forest-muted);
+  max-width: 34ch;
+}
+.cc-footer__col h4 {
+  font-family: var(--cc-font-head);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cc-lime);
+  margin-bottom: 16px;
+}
+.cc-footer__col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.cc-footer__col a { font-family: var(--cc-font-body); font-size: 15px; }
+
+.cc-footer .cc-logo__mark { width: 44px; height: 44px; }
+
+/* Contact + social */
+.cc-footer__contact { display: flex; flex-direction: column; gap: 12px; }
+.cc-footer__contact a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--cc-font-body); font-size: 15px;
+}
+.cc-social { display: flex; gap: 10px; margin-top: 6px; }
+.cc-social a {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: var(--cc-radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cc-on-forest);
+  transition: background .2s, transform .12s, color .2s;
+}
+.cc-social a:hover { background: var(--cc-lime); color: var(--cc-forest-deep); transform: translateY(-2px); }
+
+.cc-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cc-footer__bottom p { font-family: var(--cc-font-body); font-size: 13px; color: var(--cc-on-forest-muted); }
+.cc-footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
+.cc-footer__legal a { font-size: 13px; }
+
+@media (max-width: 860px) {
+  .cc-footer__top { grid-template-columns: 1fr 1fr; gap: 32px; padding: 40px 0 28px; }
+  .cc-footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .cc-footer__top { grid-template-columns: 1fr; }
+  .cc-footer__bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ==========================================================================
+   Reusable buttons (available to page content too)
+   ========================================================================== */
+.cc-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--cc-font-head); font-weight: 700; font-size: 15px;
+  padding: 12px 24px;
+  border-radius: var(--cc-radius-full);
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .12s, background .2s, box-shadow .2s;
+}
+.cc-btn:active { transform: scale(0.97); }
+.cc-btn--primary { background: var(--cc-primary); color: #fff; box-shadow: var(--cc-shadow-sm); }
+.cc-btn--primary:hover { background: var(--cc-primary-600); box-shadow: var(--cc-shadow); }
+.cc-btn--lime { background: var(--cc-lime); color: var(--cc-forest-deep); }
+.cc-btn--lime:hover { filter: brightness(1.05); }
+.cc-btn--ghost { background: transparent; color: var(--cc-primary); border-color: var(--cc-border-strong); }
+.cc-btn--ghost:hover { background: rgba(23, 80, 26, 0.06); }
+
+/* Small quality-of-life: smooth scrolling + selection colour */
+html { scroll-behavior: smooth; }
+::selection { background: var(--cc-lime); color: var(--cc-forest-deep); }
