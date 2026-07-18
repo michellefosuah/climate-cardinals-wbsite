@@ -10,7 +10,7 @@
   // ----------------------------------------------------------------------
   // After deploying the backend (see DEPLOYMENT.md), paste its base URL here,
   // e.g. 'https://climate-cardinals-api.onrender.com/api'
-  var PROD_API_BASE = '';
+  var PROD_API_BASE = 'https://climate-cardinals-api.onrender.com/api';
 
   // Resolution order:
   //   1. a runtime override in localStorage ('cc_api_base')
