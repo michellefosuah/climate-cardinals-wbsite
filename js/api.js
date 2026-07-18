@@ -49,9 +49,11 @@
         body: options.body ? JSON.stringify(options.body) : undefined,
       });
     } catch (networkErr) {
-      throw new Error(
-        'Could not reach the server. Is the API running at ' + BASE + '?'
+      var e = new Error(
+        'We could not reach the Climate Cardinals server. Browsing works in demo mode, but this action needs the live API to be running.'
       );
+      e.isNetwork = true;
+      throw e;
     }
 
     var data = null;
@@ -182,13 +184,37 @@
       return request('/auth/me');
     },
 
+    // Demo mode flag — set true the first time we fall back to bundled data.
+    demoMode: false,
+
     // products
-    listProducts: function (query) {
-      var qs = query ? '?' + new URLSearchParams(query).toString() : '';
-      return request('/products' + qs);
+    listProducts: async function (query) {
+      try {
+        var qs = query ? '?' + new URLSearchParams(query).toString() : '';
+        return await request('/products' + qs);
+      } catch (e) {
+        if (!e.isNetwork) throw e;
+        var items = fallback('products').slice();
+        if (query && query.category) items = items.filter(function (p) { return p.category === query.category; });
+        if (query && query.search) {
+          var s = String(query.search).toLowerCase();
+          items = items.filter(function (p) {
+            return p.name.toLowerCase().indexOf(s) !== -1 || p.description.toLowerCase().indexOf(s) !== -1;
+          });
+        }
+        if (query && query.limit) items = items.slice(0, query.limit);
+        return { data: items, demo: true };
+      }
     },
-    getProduct: function (idOrSlug) {
-      return request('/products/' + encodeURIComponent(idOrSlug));
+    getProduct: async function (idOrSlug) {
+      try {
+        return await request('/products/' + encodeURIComponent(idOrSlug));
+      } catch (e) {
+        if (!e.isNetwork) throw e;
+        var found = fallback('products').find(function (p) { return p.id === idOrSlug || p.slug === idOrSlug; });
+        if (!found) throw e;
+        return { data: found, demo: true };
+      }
     },
 
     // orders / checkout
@@ -200,9 +226,16 @@
     },
 
     // events
-    listEvents: function (query) {
-      var qs = query ? '?' + new URLSearchParams(query).toString() : '';
-      return request('/events' + qs);
+    listEvents: async function (query) {
+      try {
+        var qs = query ? '?' + new URLSearchParams(query).toString() : '';
+        return await request('/events' + qs);
+      } catch (e) {
+        if (!e.isNetwork) throw e;
+        var items = fallback('events').slice();
+        if (query && query.category) items = items.filter(function (x) { return x.category === query.category; });
+        return { data: items, demo: true };
+      }
     },
     registerForEvent: function (idOrSlug, payload) {
       return request('/events/' + encodeURIComponent(idOrSlug) + '/register', {
@@ -229,11 +262,33 @@
     },
 
     // content
-    listTeam: function (tier) {
-      return request('/team' + (tier ? '?tier=' + tier : ''));
+    listTeam: async function (tier) {
+      try {
+        return await request('/team' + (tier ? '?tier=' + tier : ''));
+      } catch (e) {
+        if (!e.isNetwork) throw e;
+        var items = fallback('team').slice();
+        if (tier) items = items.filter(function (m) { return m.tier === tier; });
+        return { data: items, demo: true };
+      }
     },
-    listImpact: function () {
-      return request('/impact');
+    listImpact: async function () {
+      try {
+        return await request('/impact');
+      } catch (e) {
+        if (!e.isNetwork) throw e;
+        return { data: fallback('impact').slice(), demo: true };
+      }
     },
   };
+
+  // Return bundled fallback content and flag demo mode (used when the API is
+  // unreachable so the site still renders for browsing).
+  function fallback(kind) {
+    if (!window.CC_API.demoMode) {
+      window.CC_API.demoMode = true;
+      try { window.dispatchEvent(new Event('cc:demo')); } catch (e) {}
+    }
+    return (window.CC_FALLBACK && window.CC_FALLBACK[kind]) || [];
+  }
 })();
