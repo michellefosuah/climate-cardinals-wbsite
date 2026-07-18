@@ -127,7 +127,7 @@ const events = [
   },
 ];
 
-// Team roster from main.html.
+// Team roster from index.html.
 const team = [
   { name: 'Dr. Edmund Yamba', role: 'Patron', tier: 'LEADERSHIP', imageUrl: 'images/patron.jpeg', sortOrder: 1 },
   { name: 'Michelle Fosuah Kwarteng', role: 'Chapter President', tier: 'LEADERSHIP', imageUrl: 'images/delegate.jpeg', sortOrder: 2 },
@@ -143,7 +143,7 @@ const team = [
   { name: 'Akua Dankwa', role: 'Education Fellow', tier: 'FELLOW', sortOrder: 4 },
 ];
 
-// Impact stats from main.html / impact.html.
+// Impact stats from index.html / impact.html.
 const impactStats = [
   { label: 'Pages of Climate Data Translated', value: '500+', description: 'Translated into local dialects for wider accessibility.', icon: 'translate', sortOrder: 1 },
   { label: 'Volunteers Engaged', value: '1,200', description: 'Students and community members mobilised for climate action.', icon: 'groups', sortOrder: 2 },

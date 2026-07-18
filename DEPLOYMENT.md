@@ -69,8 +69,8 @@ automatically — only non-local visitors use `PROD_API_BASE`.)
    → **Save**.
 4. After a minute your site is live at
    `https://<your-username>.github.io/climate-cardinals-wbsite/`.
-   The home page is **`main.html`**; the Pages root shows the events page
-   (`index.html`).
+   The **root URL now serves the home page** (`index.html`); the events
+   listing is at `events.html`.
 
 ---
 
@@ -111,7 +111,7 @@ npm run db:seed
 npm start                    # API at http://localhost:4000
 
 # 2. Frontend — from the project root, in another terminal:
-python3 -m http.server 5500  # site at http://localhost:5500/main.html
+python3 -m http.server 5500  # site at http://localhost:5500/
 ```
 
 `js/config.js` already targets `http://localhost:4000/api` when you browse via

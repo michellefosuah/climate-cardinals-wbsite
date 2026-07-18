@@ -115,7 +115,7 @@
           '<h3 class="cc-event__title">' + ev.title + '</h3>' +
           '<div class="cc-event__meta"><span>' + icon('clock',{size:17}) + time + '</span><span>' + icon('pin',{size:17}) + ev.location + '</span></div>' +
           '<p class="cc-muted" style="font-size:.95rem">' + ev.description + '</p>' +
-          '<div style="margin-top:4px"><a href="index.html" class="cc-btn cc-btn--primary">Register</a></div>' +
+          '<div style="margin-top:4px"><a href="events.html" class="cc-btn cc-btn--primary">Register</a></div>' +
           '</div>' + thumb + '</article>'
         );
       }).join('');

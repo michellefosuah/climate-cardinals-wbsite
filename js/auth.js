@@ -9,7 +9,7 @@
   }
 
   function redirectAfterAuth() {
-    var next = qs('next') || 'main.html';
+    var next = qs('next') || 'index.html';
     window.location.href = next;
   }
 

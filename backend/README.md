@@ -261,7 +261,7 @@ content. To wire them to this API:
 - Replace `addToCart(...)` / cart rendering with calls to `/api/cart`
   (for logged-in users) or keep `localStorage` and send the item list to
   `POST /api/orders` at checkout for guests.
-- Populate `shop.html`, `index.html` (events), `main.html` (team), and
+- Populate `shop.html`, `events.html`, `index.html` (home/team), and
   `impact.html` from their respective `GET` endpoints.
 - Point the newsletter, contact, donation, and volunteer forms at their `POST`
   endpoints instead of the external form link.

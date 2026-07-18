@@ -12,17 +12,17 @@
   var icon = window.CC_ICON || function () { return ''; };
 
   var NAV = [
-    { label: 'Home', href: 'main.html' },
-    { label: 'Events', href: 'index.html' },
+    { label: 'Home', href: 'index.html' },
+    { label: 'Events', href: 'events.html' },
     { label: 'Impact', href: 'impact.html' },
     { label: 'Shop', href: 'shop.html' },
-    { label: 'About', href: 'main.html#about' },
-    { label: 'Team', href: 'main.html#team' },
+    { label: 'About', href: 'index.html#about' },
+    { label: 'Team', href: 'index.html#team' },
   ];
 
   function currentPage() {
     var p = location.pathname.split('/').pop();
-    return p ? p : 'main.html';
+    return p ? p : 'index.html';
   }
 
   var MARK =
@@ -30,7 +30,7 @@
 
   function logo(light) {
     return (
-      '<a class="cc-logo" href="main.html" aria-label="Climate Cardinals KNUST home">' +
+      '<a class="cc-logo" href="index.html" aria-label="Climate Cardinals KNUST home">' +
       MARK +
       '<span class="cc-logo__text">' +
       '<span class="cc-logo__name"' + (light ? ' style="color:#fff"' : '') + '>Climate Cardinals</span>' +
@@ -42,7 +42,7 @@
     var page = currentPage();
     var links = NAV.map(function (n) {
       // Only exact page links (no #hash) get the active state, so anchor links
-      // like main.html#about don't all light up on the home page.
+      // like index.html#about don't all light up on the home page.
       var active = n.href === page ? ' class="is-active"' : '';
       return '<a' + active + ' href="' + n.href + '">' + n.label + '</a>';
     }).join('');
@@ -84,15 +84,15 @@
       '<div class="cc-social">' + socialHtml + '</div></div>' +
 
       '<div class="cc-footer__col"><h4>Explore</h4><ul>' +
-      '<li><a href="main.html">Home</a></li>' +
-      '<li><a href="index.html">Events</a></li>' +
+      '<li><a href="index.html">Home</a></li>' +
+      '<li><a href="events.html">Events</a></li>' +
       '<li><a href="impact.html">Our Impact</a></li>' +
       '<li><a href="shop.html">Merch Store</a></li></ul></div>' +
 
       '<div class="cc-footer__col"><h4>Get Involved</h4><ul>' +
       '<li><a href="#" data-volunteer>Volunteer</a></li>' +
       '<li><a href="#" data-donate data-project="1000-Tree Initiative">Donate</a></li>' +
-      '<li><a href="main.html#team">Our Team</a></li>' +
+      '<li><a href="index.html#team">Our Team</a></li>' +
       '<li><a href="signup.html">Create Account</a></li></ul></div>' +
 
       '<div class="cc-footer__col"><h4>Contact</h4><div class="cc-footer__contact">' +
