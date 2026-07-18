@@ -26,12 +26,7 @@
   }
 
   var MARK =
-    '<span class="cc-logo__mark"><svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">' +
-    '<rect x="0" y="0" width="100" height="50" fill="#7cc9ec"/>' +
-    '<rect x="0" y="50" width="100" height="50" fill="#2b34a0"/>' +
-    '<path d="M53 20 C68 40 66 53 51 63 C40 71 33 69 33 69 C33 52 40 33 53 20 Z" fill="#e11d2a" stroke="#141414" stroke-width="3.5" stroke-linejoin="round"/>' +
-    '<path d="M33 69 L23 82 L44 74 Z" fill="#e11d2a" stroke="#141414" stroke-width="3.5" stroke-linejoin="round"/>' +
-    '</svg></span>';
+    '<span class="cc-logo__mark"><img src="images/logo-mark.png" alt="Climate Cardinals logo" width="100%" height="100%"/></span>';
 
   function logo(light) {
     return (
