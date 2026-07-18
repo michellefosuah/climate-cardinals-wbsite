@@ -6,7 +6,7 @@
 <title>Climate Cardinals KNUST | Rooted in Climate Action</title>
 <meta name="description" content="A youth-led KNUST chapter translating climate knowledge into local languages and leading hands-on environmental action across the Ashanti region."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -27,29 +27,7 @@
         </div>
       </div>
       <div class="cc-hero__media">
-      <div class="cc-hero__art">
-        <!-- Self-contained SVG scene: sky, hills, sun, growing sapling -->
-        <svg viewBox="0 0 400 400" width="100%" height="100%" role="img" aria-label="A sapling growing on green hills under a warm sun" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#bfe28f"/><stop offset="1" stop-color="#e9f3d3"/>
-            </linearGradient>
-            <linearGradient id="hillA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#2f8a45"/><stop offset="1" stop-color="#1c6b34"/>
-            </linearGradient>
-          </defs>
-          <rect width="400" height="400" fill="url(#sky)"/>
-          <circle cx="300" cy="110" r="54" fill="#e2b13c" opacity="0.9"/>
-          <circle cx="300" cy="110" r="72" fill="#e2b13c" opacity="0.25"/>
-          <path d="M0 300 Q120 250 220 300 T400 290 V400 H0 Z" fill="#84cc16" opacity="0.65"/>
-          <path d="M0 340 Q140 300 260 345 T400 335 V400 H0 Z" fill="url(#hillA)"/>
-          <g transform="translate(200 300)">
-            <path d="M0 60 V-30" stroke="#14532d" stroke-width="7" fill="none" stroke-linecap="round"/>
-            <path d="M0 -8 C -46 -20 -58 -64 -20 -86 C -6 -60 -2 -34 0 -8 Z" fill="#2f8a45"/>
-            <path d="M0 -22 C 44 -34 58 -78 22 -100 C 6 -74 2 -48 0 -22 Z" fill="#4d7c4d"/>
-            <path d="M0 20 C -34 12 -44 -18 -18 -34 C -8 -14 -4 2 0 20 Z" fill="#84cc16"/>
-          </g>
-        </svg>
+      <div class="cc-hero__art"><svg viewBox="0 0 400 400" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Climate Cardinals emblem"><rect width="400" height="400" fill="#ffd60a"/><circle cx="200" cy="200" r="150" fill="none" stroke="#0e0e0e" stroke-width="3"/><circle cx="200" cy="200" r="112" fill="none" stroke="#0e0e0e" stroke-width="3"/><circle cx="200" cy="200" r="74" fill="#0e0e0e"/><circle cx="200" cy="200" r="34" fill="#16a34a"/><circle cx="200" cy="50" r="12" fill="#16a34a"/><circle cx="350" cy="200" r="10" fill="#0e0e0e"/><circle cx="80" cy="320" r="8" fill="#0e0e0e"/></svg>
       </div>
         <div class="cc-hero__stat"><b>25+</b><span>Languages reached</span></div>
       </div>
@@ -92,8 +70,24 @@
     </div>
   </section>
 
+  <!-- Upcoming Events -->
+  <section class="cc-section cc-bg-alt" id="events">
+    <div class="cc-container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:36px">
+        <div>
+          <span class="cc-eyebrow">What's on</span>
+          <h2 class="cc-h2" style="margin-top:14px">Upcoming events</h2>
+        </div>
+        <a href="index.html" class="cc-btn cc-btn--ghost">View all events <span data-ico="arrowRight"></span></a>
+      </div>
+      <div data-home-events style="display:flex;flex-direction:column;gap:18px">
+        <div class="cc-loading">Loading events…</div>
+      </div>
+    </div>
+  </section>
+
   <!-- Impact stats -->
-  <section class="cc-section cc-bg-alt" id="impact">
+  <section class="cc-section" id="impact">
     <div class="cc-container">
       <div class="cc-section-head cc-center">
         <span class="cc-eyebrow">Our Impact</span>
