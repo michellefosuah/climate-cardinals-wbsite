@@ -168,31 +168,47 @@ async function main() {
   });
   console.log(`   ✓ Admin user: ${adminEmail}`);
 
-  // Products — images are locally hosted SVGs (self-contained, durable).
-  for (const p of products) {
-    const slug = slugify(p.name);
-    const data = { ...p, slug, imageUrl: `images/merch/${slug}.svg` };
-    await prisma.product.upsert({ where: { slug }, update: data, create: data });
+  // Sample content is seeded ONLY when a table is empty, so any changes made
+  // through the admin dashboard survive future deploys (this seed runs on
+  // every deploy). To re-seed a section, clear that table first.
+
+  // Products
+  if ((await prisma.product.count()) === 0) {
+    for (const p of products) {
+      const slug = slugify(p.name);
+      await prisma.product.create({ data: { ...p, slug, imageUrl: `images/merch/${slug}.svg` } });
+    }
+    console.log(`   ✓ ${products.length} products (seeded)`);
+  } else {
+    console.log('   • products already present — left untouched');
   }
-  console.log(`   ✓ ${products.length} products`);
 
-  // Events — locally hosted SVG scenes.
-  for (const e of events) {
-    const slug = slugify(e.title);
-    const data = { ...e, slug, imageUrl: `images/events/${slug}.svg` };
-    await prisma.event.upsert({ where: { slug }, update: data, create: data });
+  // Events
+  if ((await prisma.event.count()) === 0) {
+    for (const e of events) {
+      const slug = slugify(e.title);
+      await prisma.event.create({ data: { ...e, slug, imageUrl: `images/events/${slug}.svg` } });
+    }
+    console.log(`   ✓ ${events.length} events (seeded)`);
+  } else {
+    console.log('   • events already present — left untouched');
   }
-  console.log(`   ✓ ${events.length} events`);
 
-  // Team — no natural unique key, so reset and re-insert for idempotency.
-  await prisma.teamMember.deleteMany();
-  await prisma.teamMember.createMany({ data: team });
-  console.log(`   ✓ ${team.length} team members`);
+  // Team
+  if ((await prisma.teamMember.count()) === 0) {
+    await prisma.teamMember.createMany({ data: team });
+    console.log(`   ✓ ${team.length} team members (seeded)`);
+  } else {
+    console.log('   • team already present — left untouched');
+  }
 
-  // Impact stats — same approach.
-  await prisma.impactStat.deleteMany();
-  await prisma.impactStat.createMany({ data: impactStats });
-  console.log(`   ✓ ${impactStats.length} impact stats`);
+  // Impact stats
+  if ((await prisma.impactStat.count()) === 0) {
+    await prisma.impactStat.createMany({ data: impactStats });
+    console.log(`   ✓ ${impactStats.length} impact stats (seeded)`);
+  } else {
+    console.log('   • impact stats already present — left untouched');
+  }
 
   console.log('✅ Seed complete.');
 }

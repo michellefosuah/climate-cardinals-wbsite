@@ -105,7 +105,8 @@
       '<p>© ' + year + ' Climate Cardinals KNUST. All rights reserved.</p>' +
       '<div class="cc-footer__legal">' +
       '<a href="#">Privacy Policy</a><a href="#">Terms of Service</a>' +
-      '<a href="mailto:' + email + '">Contact Us</a></div>' +
+      '<a href="mailto:' + email + '">Contact Us</a>' +
+      '<a href="admin.html" title="Chapter admin">Admin</a></div>' +
       '</div></div>';
     return footer;
   }
