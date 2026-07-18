@@ -92,6 +92,37 @@
     } catch (e) { /* keep fallback */ }
   }
 
+  // ---- upcoming events (home) ---------------------------------------------
+  var MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  function fmtTime(iso) {
+    return new Date(iso).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  }
+  async function loadHomeEvents() {
+    var box = document.querySelector('[data-home-events]');
+    if (!box) return;
+    try {
+      var res = await window.CC_API.listEvents({});
+      var events = (res.data || []).slice(0, 3);
+      if (!events.length) { box.innerHTML = '<div class="cc-loading">No upcoming events right now.</div>'; return; }
+      box.innerHTML = events.map(function (ev) {
+        var d = new Date(ev.startTime);
+        var time = fmtTime(ev.startTime) + (ev.endTime ? ' – ' + fmtTime(ev.endTime) : '');
+        var thumb = ev.imageUrl ? '<div class="cc-event__thumb"><img src="' + ev.imageUrl + '" alt="' + ev.title + '" onerror="this.parentNode.style.display=\'none\'"/></div>' : '';
+        return (
+          '<article class="cc-card cc-event cc-reveal">' +
+          '<div class="cc-event__date"><span class="m">' + MONTHS[d.getMonth()] + '</span><span class="d">' + String(d.getDate()).padStart(2,'0') + '</span></div>' +
+          '<div class="cc-event__body">' +
+          '<h3 class="cc-event__title">' + ev.title + '</h3>' +
+          '<div class="cc-event__meta"><span>' + icon('clock',{size:17}) + time + '</span><span>' + icon('pin',{size:17}) + ev.location + '</span></div>' +
+          '<p class="cc-muted" style="font-size:.95rem">' + ev.description + '</p>' +
+          '<div style="margin-top:4px"><a href="index.html" class="cc-btn cc-btn--primary">Register</a></div>' +
+          '</div>' + thumb + '</article>'
+        );
+      }).join('');
+      observeReveal(box);
+    } catch (e) { box.innerHTML = '<div class="cc-loading">Could not load events.</div>'; }
+  }
+
   // ---- scroll reveal -------------------------------------------------------
   var io;
   function observeReveal(scope) {
@@ -113,6 +144,7 @@
     loadImpact();
     loadTeam();
     loadFeatured();
+    loadHomeEvents();
     observeReveal(document);
   });
 })();
