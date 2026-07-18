@@ -76,8 +76,9 @@
       var res = await window.CC_API.listProducts({ limit: limit });
       var items = res.data || [];
       box.innerHTML = items.map(function (p) {
+        var pfb = 'images/merch/' + p.slug + '.svg';
         var img = p.imageUrl
-          ? '<img src="' + p.imageUrl + '" alt="' + p.name + '" onerror="this.parentNode.innerHTML=\'\'"/>'
+          ? '<img src="' + p.imageUrl + '" alt="' + p.name + '" onerror="this.onerror=null;this.src=\'' + pfb + '\'"/>'
           : '';
         return (
           '<a href="shop.html" class="cc-card cc-product cc-reveal">' +

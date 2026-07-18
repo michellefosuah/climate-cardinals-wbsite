@@ -168,10 +168,17 @@ async function main() {
   });
   console.log(`   ✓ Admin user: ${adminEmail}`);
 
-  // Products — images are locally hosted SVGs (self-contained, durable).
+  // Products — real photography, with the local SVG as a client-side fallback.
+  const productPhotos = {
+    'rooted-tee': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
+    'cardinal-tote-bag': 'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=80',
+    'climate-justice-pack': 'https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=800&q=80',
+    'earth-first-mug': 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80',
+    'stainless-hydrator': 'https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=800&q=80',
+  };
   for (const p of products) {
     const slug = slugify(p.name);
-    const data = { ...p, slug, imageUrl: `images/merch/${slug}.svg` };
+    const data = { ...p, slug, imageUrl: productPhotos[slug] || `images/merch/${slug}.svg` };
     await prisma.product.upsert({ where: { slug }, update: data, create: data });
   }
   console.log(`   ✓ ${products.length} products`);

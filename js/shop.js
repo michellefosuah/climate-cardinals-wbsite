@@ -11,8 +11,9 @@
 
   function card(p) {
     var badge = p.badge ? '<span class="cc-badge ' + (BADGE[p.badge] || 'cc-badge--forest') + '">' + p.badge + '</span>' : '';
+    var pfb = 'images/merch/' + p.slug + '.svg';
     var img = p.imageUrl
-      ? '<img src="' + p.imageUrl + '" alt="' + p.name + '" onerror="this.style.display=\'none\'"/>'
+      ? '<img src="' + p.imageUrl + '" alt="' + p.name + '" onerror="this.onerror=null;this.src=\'' + pfb + '\'"/>'
       : '';
     var out = p.stock <= 0;
     return (

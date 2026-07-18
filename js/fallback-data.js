@@ -13,7 +13,16 @@
     { name: 'Climate Justice Pack', slug: 'climate-justice-pack', description: 'Waterproof vinyl stickers to deck out your laptop and bottles.', price: 45, category: 'STICKERS', badge: null, stock: 200 },
     { name: 'Earth First Mug', slug: 'earth-first-mug', description: 'Hand-finished ceramic mug, perfect for your morning brew.', price: 60, category: 'DRINKWARE', badge: 'Limited Edition', stock: 40 },
     { name: 'Stainless Hydrator', slug: 'stainless-hydrator', description: 'Double-walled insulated stainless steel bottle that keeps drinks cold all day.', price: 120, category: 'DRINKWARE', badge: null, stock: 35 },
-  ].map(function (p) { return Object.assign({ id: p.slug, imageUrl: 'images/merch/' + p.slug + '.svg', isActive: true }, p); });
+  ].map(function (p) {
+    var photos = {
+      'rooted-tee': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
+      'cardinal-tote-bag': 'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=80',
+      'climate-justice-pack': 'https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=800&q=80',
+      'earth-first-mug': 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80',
+      'stainless-hydrator': 'https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=800&q=80',
+    };
+    return Object.assign({ id: p.slug, imageUrl: photos[p.slug] || ('images/merch/' + p.slug + '.svg'), isActive: true }, p);
+  });
 
   var events = [
     { title: 'Tree Planting Workshop', slug: 'tree-planting-workshop', category: 'WORKSHOP', location: 'KNUST Botanical Gardens', startTime: '2026-10-20T09:00:00Z', endTime: '2026-10-20T12:00:00Z', capacity: 60, description: 'Join us for a hands-on session on native species restoration. Learn about the diverse ecosystems within our campus and help us plant over 50 saplings to increase local canopy cover.' },
