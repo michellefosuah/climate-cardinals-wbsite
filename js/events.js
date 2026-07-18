@@ -16,8 +16,9 @@
   function card(ev) {
     var start = new Date(ev.startTime);
     var time = fmtTime(ev.startTime) + (ev.endTime ? ' – ' + fmtTime(ev.endTime) : '');
+    var fb = 'images/events/' + ev.slug + '.svg';
     var thumb = ev.imageUrl
-      ? '<div class="cc-event__thumb"><img src="' + ev.imageUrl + '" alt="' + ev.title + '" onerror="this.parentNode.style.display=\'none\'"/></div>'
+      ? '<div class="cc-event__thumb"><img src="' + ev.imageUrl + '" alt="' + ev.title + '" onerror="this.onerror=null;this.src=\'' + fb + '\'"/></div>'
       : '';
     var full = ev.capacity != null && ev.registrationCount >= ev.capacity;
     return (

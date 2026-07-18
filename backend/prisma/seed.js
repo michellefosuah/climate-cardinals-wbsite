@@ -176,10 +176,16 @@ async function main() {
   }
   console.log(`   ✓ ${products.length} products`);
 
-  // Events — locally hosted SVG scenes.
+  // Events — real photography, with the local SVG scene as a client-side fallback.
+  const eventPhotos = {
+    'tree-planting-workshop': 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=900&q=80',
+    'climate-advocacy-seminar': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80',
+    'youth-climate-meeting': 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
+    'bio-diversity-nature-walk': 'https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?auto=format&fit=crop&w=900&q=80',
+  };
   for (const e of events) {
     const slug = slugify(e.title);
-    const data = { ...e, slug, imageUrl: `images/events/${slug}.svg` };
+    const data = { ...e, slug, imageUrl: eventPhotos[slug] || `images/events/${slug}.svg` };
     await prisma.event.upsert({ where: { slug }, update: data, create: data });
   }
   console.log(`   ✓ ${events.length} events`);

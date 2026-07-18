@@ -107,7 +107,8 @@
       box.innerHTML = events.map(function (ev) {
         var d = new Date(ev.startTime);
         var time = fmtTime(ev.startTime) + (ev.endTime ? ' – ' + fmtTime(ev.endTime) : '');
-        var thumb = ev.imageUrl ? '<div class="cc-event__thumb"><img src="' + ev.imageUrl + '" alt="' + ev.title + '" onerror="this.parentNode.style.display=\'none\'"/></div>' : '';
+        var evfb = 'images/events/' + ev.slug + '.svg';
+        var thumb = ev.imageUrl ? '<div class="cc-event__thumb"><img src="' + ev.imageUrl + '" alt="' + ev.title + '" onerror="this.onerror=null;this.src=\'' + evfb + '\'"/></div>' : '';
         return (
           '<article class="cc-card cc-event cc-reveal">' +
           '<div class="cc-event__date"><span class="m">' + MONTHS[d.getMonth()] + '</span><span class="d">' + String(d.getDate()).padStart(2,'0') + '</span></div>' +
