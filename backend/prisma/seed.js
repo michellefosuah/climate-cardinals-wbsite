@@ -168,25 +168,19 @@ async function main() {
   });
   console.log(`   ✓ Admin user: ${adminEmail}`);
 
-  // Products
+  // Products — images are locally hosted SVGs (self-contained, durable).
   for (const p of products) {
     const slug = slugify(p.name);
-    await prisma.product.upsert({
-      where: { slug },
-      update: { ...p, slug },
-      create: { ...p, slug },
-    });
+    const data = { ...p, slug, imageUrl: `images/merch/${slug}.svg` };
+    await prisma.product.upsert({ where: { slug }, update: data, create: data });
   }
   console.log(`   ✓ ${products.length} products`);
 
-  // Events
+  // Events — locally hosted SVG scenes.
   for (const e of events) {
     const slug = slugify(e.title);
-    await prisma.event.upsert({
-      where: { slug },
-      update: { ...e, slug },
-      create: { ...e, slug },
-    });
+    const data = { ...e, slug, imageUrl: `images/events/${slug}.svg` };
+    await prisma.event.upsert({ where: { slug }, update: data, create: data });
   }
   console.log(`   ✓ ${events.length} events`);
 
