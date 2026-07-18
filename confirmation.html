@@ -1,83 +1,59 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en"><head>
+<html lang="en" data-year="2024">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Order Confirmed | Climate Cardinals KNUST</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
-  tailwind.config = { theme: { extend: { colors: {
-    "primary": "#154212", "on-primary": "#ffffff", "primary-container": "#2d5a27",
-    "secondary": "#416900", "secondary-container": "#acf847", "on-secondary-fixed": "#102000",
-    "tertiary-container": "#295568", "on-tertiary-container": "#9dc9df",
-    "surface": "#fff8f6", "surface-bright": "#fff8f6", "surface-container-low": "#fff1eb",
-    "surface-container": "#ffeae1", "on-surface": "#351000", "on-surface-variant": "#42493e",
-    "outline": "#72796e", "background": "#fff8f6"
-  }, fontFamily: {
-    "headline-md": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"],
-    "body-md": ["Atkinson Hyperlegible Next"], "label-caps": ["Plus Jakarta Sans"]
-  } } } }
-</script>
-<style>.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400;vertical-align:middle}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
-<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
-<header class="bg-surface border-b border-on-surface/10 w-full sticky top-0 z-50">
-<div class="flex justify-between items-center px-6 py-4 max-w-[1280px] mx-auto">
-<a href="main.html" class="font-headline-md text-2xl font-bold text-primary">Climate Cardinals KNUST</a>
-<a href="shop.html" class="text-on-surface-variant hover:text-primary transition-colors">Continue Shopping</a>
-</div>
-</header>
-<main class="flex-grow flex items-center justify-center px-6 py-12">
-<div class="w-full max-w-lg text-center">
-<div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center mx-auto mb-6">
-<span class="material-symbols-outlined text-primary" style="font-size:44px;font-variation-settings:'FILL' 1">check_circle</span>
-</div>
-<h1 class="font-display-lg text-3xl md:text-4xl font-bold text-primary mb-2">Thank you for your order!</h1>
-<p class="text-on-surface-variant mb-8">Your support funds climate education and tree-planting across Kumasi. A confirmation has been noted for your email.</p>
-<div id="order-box" class="bg-surface-container-low rounded-2xl p-6 border border-on-surface/5 text-left mb-8 hidden">
-<div class="flex justify-between items-center mb-4">
-<span class="font-label-caps text-xs uppercase tracking-wider text-on-surface-variant">Order Reference</span>
-<span id="order-id" class="font-mono text-sm font-bold text-primary"></span>
-</div>
-<div id="order-items" class="space-y-2 mb-4"></div>
-<div class="border-t border-on-surface/10 pt-4 flex justify-between font-bold text-lg">
-<span>Total</span><span id="order-total" class="text-primary"></span>
-</div>
-</div>
-<div class="flex flex-col sm:flex-row gap-3 justify-center">
-<a href="shop.html" class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold hover:bg-primary-container transition-all">Continue Shopping</a>
-<a href="index.html" class="border border-primary text-primary px-8 py-3 rounded-full font-bold hover:bg-primary/5 transition-all">Explore Events</a>
-</div>
-</div>
+<body style="display:flex;flex-direction:column;min-height:100vh">
+<main class="cc-auth">
+  <div class="cc-auth__card cc-center" style="max-width:560px">
+    <div class="cc-auth__badge" style="width:82px;height:82px"><span data-ico="checkCircle"></span></div>
+    <h1 class="cc-display" style="font-size:clamp(1.9rem,4vw,2.6rem)">Thank you for your order!</h1>
+    <p class="cc-lead cc-mt-s">Your support funds climate education and tree-planting across Kumasi. A confirmation has been noted for your email.</p>
+
+    <div id="order-box" class="cc-card" style="padding:24px;text-align:left;margin:28px 0;display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <span class="cc-label">Order Reference</span>
+        <span id="order-id" style="font-family:monospace;font-weight:800;color:var(--primary)"></span>
+      </div>
+      <div id="order-items" style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px"></div>
+      <div style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:14px;font-size:1.1rem">
+        <b>Total</b><b id="order-total" style="color:var(--primary)"></b></div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="shop.html" class="cc-btn cc-btn--primary">Continue shopping</a>
+      <a href="index.html" class="cc-btn cc-btn--ghost">Explore events</a>
+    </div>
+  </div>
 </main>
-<footer class="bg-surface-container-low border-t border-on-surface/5">
-<div class="flex flex-col md:flex-row justify-between items-center px-6 py-6 max-w-[1280px] mx-auto gap-4">
-<div class="font-label-caps text-xs tracking-widest text-secondary uppercase">Climate Cardinals KNUST</div>
-<div class="text-on-surface-variant text-sm">© 2024 Climate Cardinals KNUST. All rights reserved.</div>
-</div>
-</footer>
+
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/site.js"></script>
 <script>
   (function () {
     var order;
     try { order = JSON.parse(sessionStorage.getItem('cc_last_order')); } catch (e) {}
     if (!order) return;
-    var box = document.getElementById('order-box');
-    box.classList.remove('hidden');
+    document.getElementById('order-box').style.display = 'block';
     document.getElementById('order-id').textContent = '#' + String(order.id).slice(0, 8).toUpperCase();
     document.getElementById('order-total').textContent = 'GHS ' + Number(order.total).toFixed(2);
     var itemsEl = document.getElementById('order-items');
     (order.items || []).forEach(function (it) {
       var row = document.createElement('div');
-      row.className = 'flex justify-between text-on-surface-variant';
-      row.innerHTML = '<span>' + it.name + ' × ' + it.quantity + '</span>' +
-        '<span>GHS ' + (Number(it.unitPrice) * it.quantity).toFixed(2) + '</span>';
+      row.style.cssText = 'display:flex;justify-content:space-between;color:var(--ink-soft)';
+      row.innerHTML = '<span>' + it.name + ' × ' + it.quantity + '</span><span>GHS ' + (Number(it.unitPrice) * it.quantity).toFixed(2) + '</span>';
       itemsEl.appendChild(row);
     });
-    // Order handled — clear it so a refresh doesn't re-show stale data.
     sessionStorage.removeItem('cc_last_order');
   })();
 </script>
-</body></html>
+<script src="js/chrome.js"></script>
+</body>
+</html>

@@ -1,97 +1,24 @@
 /**
- * Shared site chrome, loaded on every page:
- *  - injects a consistent social-media bar into the footer
- *  - keeps the cart badge count in sync
- *  - wires the account icon (login / logout depending on session)
- *  - provides CC_UI.toast() for lightweight feedback
+ * Small shared UI helpers used across pages.
+ * The header/footer chrome lives in js/chrome.js; this file only provides
+ * the toast notification and the cart-badge updater.
  */
 (function () {
   'use strict';
 
-  var social = (window.CC_CONFIG && window.CC_CONFIG.social) || [];
-
-  // ---- toast --------------------------------------------------------------
   function toast(message, type) {
     var el = document.createElement('div');
-    var bg = type === 'error' ? '#ba1a1a' : '#154212';
+    el.className = 'cc-toast' + (type === 'error' ? ' cc-toast--error' : '');
     el.textContent = message;
     el.setAttribute('role', 'status');
-    el.style.cssText =
-      'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
-      'background:' + bg + ';color:#fff;padding:12px 20px;border-radius:9999px;' +
-      'font-family:Atkinson Hyperlegible Next,sans-serif;font-size:15px;' +
-      'box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:9999;opacity:0;' +
-      'transition:opacity .25s,transform .25s;max-width:90vw;text-align:center;';
     document.body.appendChild(el);
-    requestAnimationFrame(function () {
-      el.style.opacity = '1';
-    });
+    requestAnimationFrame(function () { el.classList.add('show'); });
     setTimeout(function () {
-      el.style.opacity = '0';
-      el.style.transform = 'translateX(-50%) translateY(8px)';
-      setTimeout(function () {
-        el.remove();
-      }, 300);
+      el.classList.remove('show');
+      setTimeout(function () { el.remove(); }, 300);
     }, 3200);
   }
 
-  // ---- social bar injection ----------------------------------------------
-  function buildSocialBar() {
-    if (!social.length) return null;
-    var wrap = document.createElement('div');
-    wrap.className = 'cc-social-bar';
-    wrap.style.cssText =
-      'display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;';
-    social.forEach(function (s) {
-      var a = document.createElement('a');
-      a.href = s.url;
-      a.title = s.name;
-      a.setAttribute('aria-label', s.name);
-      if (s.url.indexOf('mailto:') !== 0) {
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-      }
-      a.style.cssText =
-        'width:40px;height:40px;border-radius:9999px;display:flex;' +
-        'align-items:center;justify-content:center;background:rgba(21,66,18,.08);' +
-        'color:#154212;transition:background .2s,transform .15s;text-decoration:none;';
-      a.onmouseenter = function () {
-        a.style.background = '#acf847';
-      };
-      a.onmouseleave = function () {
-        a.style.background = 'rgba(21,66,18,.08)';
-      };
-      var icon = document.createElement('span');
-      icon.className = 'material-symbols-outlined';
-      icon.textContent = s.icon;
-      a.appendChild(icon);
-      wrap.appendChild(a);
-    });
-    return wrap;
-  }
-
-  function injectSocial() {
-    var footer = document.querySelector('footer');
-    if (!footer || footer.querySelector('.cc-social-bar')) return;
-    var bar = buildSocialBar();
-    if (!bar) return;
-    var container = footer.querySelector('.max-w-container-max') || footer;
-    // Add a small "Follow us" row.
-    var row = document.createElement('div');
-    row.style.cssText =
-      'width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;' +
-      'padding:16px 0 4px;';
-    var label = document.createElement('div');
-    label.textContent = 'Follow the movement';
-    label.style.cssText =
-      'font-family:Plus Jakarta Sans,sans-serif;font-size:12px;letter-spacing:.05em;' +
-      'text-transform:uppercase;font-weight:700;color:#416900;';
-    row.appendChild(label);
-    row.appendChild(bar);
-    container.appendChild(row);
-  }
-
-  // ---- cart badge ---------------------------------------------------------
   function updateCartBadge() {
     if (!window.CC_API) return;
     var count = window.CC_API.Cart.count();
@@ -102,45 +29,30 @@
     }
   }
 
-  // ---- account icon -------------------------------------------------------
-  function wireAccount() {
-    if (!window.CC_API) return;
-    var loggedIn = window.CC_API.isLoggedIn();
-    var user = window.CC_API.getUser();
-    // Any element with [data-account] or the account_circle icons become links.
-    var nodes = document.querySelectorAll(
-      '[data-account], .material-symbols-outlined'
-    );
-    nodes.forEach(function (node) {
-      var isAccount =
-        node.hasAttribute('data-account') ||
-        node.textContent.trim() === 'account_circle';
-      if (!isAccount) return;
-      var target = node.closest('a,button') || node;
-      target.style.cursor = 'pointer';
-      if (loggedIn && user) target.title = 'Signed in as ' + user.name;
-      target.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (window.CC_API.isLoggedIn()) {
-          if (confirm('Log out of Climate Cardinals?')) {
-            window.CC_API.logout();
-            toast('Logged out');
-            setTimeout(function () {
-              location.reload();
-            }, 600);
-          }
-        } else {
-          window.location.href = 'login.html';
-        }
-      });
-    });
+  // One-time "demo mode" banner shown when the live API is unreachable and the
+  // page is rendering bundled sample content instead.
+  function showDemoBanner() {
+    if (document.getElementById('cc-demo-banner')) return;
+    var bar = document.createElement('div');
+    bar.id = 'cc-demo-banner';
+    bar.style.cssText =
+      'position:sticky;top:0;z-index:1200;background:#e2b13c;color:#3a2c05;' +
+      'font-family:Atkinson Hyperlegible Next,system-ui,sans-serif;font-size:14px;' +
+      'padding:9px 16px;text-align:center;line-height:1.4;';
+    bar.innerHTML =
+      '<b>Demo mode</b> — showing sample content because the live API isn’t connected yet. ' +
+      'Browsing works; checkout, sign-in and forms need the deployed backend. ' +
+      '<button id="cc-demo-x" style="background:none;border:none;text-decoration:underline;cursor:pointer;color:inherit;font:inherit">Dismiss</button>';
+    document.body.insertBefore(bar, document.body.firstChild);
+    var x = document.getElementById('cc-demo-x');
+    if (x) x.addEventListener('click', function () { bar.remove(); });
   }
 
-  window.CC_UI = { toast: toast, updateCartBadge: updateCartBadge };
+  window.CC_UI = { toast: toast, updateCartBadge: updateCartBadge, showDemoBanner: showDemoBanner };
 
+  window.addEventListener('cc:demo', showDemoBanner);
   document.addEventListener('DOMContentLoaded', function () {
-    injectSocial();
     updateCartBadge();
-    wireAccount();
+    if (window.CC_API && window.CC_API.demoMode) showDemoBanner();
   });
 })();

@@ -1,68 +1,37 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en"><head>
+<html lang="en" data-year="2024">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Sign In | Climate Cardinals KNUST</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
-  tailwind.config = { theme: { extend: { colors: {
-    "primary": "#154212", "on-primary": "#ffffff", "primary-container": "#2d5a27",
-    "secondary": "#416900", "secondary-container": "#acf847", "on-secondary-fixed": "#102000",
-    "surface": "#fff8f6", "surface-bright": "#fff8f6", "surface-container-low": "#fff1eb",
-    "on-surface": "#351000", "on-surface-variant": "#42493e", "outline": "#72796e",
-    "background": "#fff8f6"
-  }, fontFamily: {
-    "headline-md": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"],
-    "body-md": ["Atkinson Hyperlegible Next"], "label-caps": ["Plus Jakarta Sans"]
-  } } } }
-</script>
-<style>.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400;vertical-align:middle}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
-<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
-<header class="bg-surface border-b border-on-surface/10 w-full sticky top-0 z-50">
-<div class="flex justify-between items-center px-6 py-4 max-w-[1280px] mx-auto">
-<a href="main.html" class="font-headline-md text-2xl font-bold text-primary">Climate Cardinals KNUST</a>
-<a href="shop.html" class="text-on-surface-variant hover:text-primary transition-colors">Merch</a>
-</div>
-</header>
-<main class="flex-grow flex items-center justify-center px-6 py-12">
-<div class="w-full max-w-md">
-<div class="text-center mb-8">
-<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined text-primary text-3xl">eco</span>
-</div>
-<h1 class="font-display-lg text-3xl font-bold text-primary mb-1">Welcome back</h1>
-<p class="text-on-surface-variant">Sign in to your Climate Cardinals account</p>
-</div>
-<form id="login-form" class="bg-surface-container-low rounded-2xl p-6 md:p-8 border border-on-surface/5 space-y-5">
-<div class="flex flex-col gap-1">
-<label class="font-label-caps text-xs uppercase tracking-wider text-on-surface-variant ml-1" for="email">Email Address</label>
-<input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"
-  class="bg-surface-bright border border-outline/20 rounded-lg p-3 focus:ring-2 focus:ring-secondary-container outline-none transition-all"/>
-</div>
-<div class="flex flex-col gap-1">
-<label class="font-label-caps text-xs uppercase tracking-wider text-on-surface-variant ml-1" for="password">Password</label>
-<input id="password" name="password" type="password" required autocomplete="current-password" placeholder="••••••••"
-  class="bg-surface-bright border border-outline/20 rounded-lg p-3 focus:ring-2 focus:ring-secondary-container outline-none transition-all"/>
-</div>
-<button type="submit" class="w-full bg-primary text-on-primary py-3 rounded-full font-bold hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
-<span class="material-symbols-outlined">login</span> Sign In
-</button>
-<p class="text-center text-sm text-on-surface-variant">
-  New here? <a href="signup.html" class="text-primary font-bold hover:underline">Create an account</a>
-</p>
-</form>
-</div>
+<body style="display:flex;flex-direction:column;min-height:100vh">
+<main class="cc-auth">
+  <div class="cc-auth__card">
+    <div class="cc-center" style="margin-bottom:24px">
+      <div class="cc-auth__badge"><span data-ico="leaf"></span></div>
+      <h1 class="cc-h2">Welcome back</h1>
+      <p class="cc-muted cc-mt-s">Sign in to your Climate Cardinals account</p>
+    </div>
+    <form id="login-form">
+      <div class="cc-field"><label class="cc-label" for="email">Email address</label>
+        <input id="email" name="email" class="cc-input" type="email" required autocomplete="email" placeholder="you@example.com"/></div>
+      <div class="cc-field"><label class="cc-label" for="password">Password</label>
+        <input id="password" name="password" class="cc-input" type="password" required autocomplete="current-password" placeholder="••••••••"/></div>
+      <button type="submit" class="cc-btn cc-btn--primary cc-btn--block cc-btn--lg"><span data-ico="login"></span> Sign in</button>
+      <p class="cc-center cc-muted" style="font-size:.9rem">New here? <a href="signup.html" style="color:var(--primary);font-weight:700">Create an account</a></p>
+    </form>
+  </div>
 </main>
-<footer class="bg-surface-container-low border-t border-on-surface/5">
-<div class="flex flex-col md:flex-row justify-between items-center px-6 py-6 max-w-[1280px] mx-auto gap-4">
-<div class="font-label-caps text-xs tracking-widest text-secondary uppercase">Climate Cardinals KNUST</div>
-<div class="text-on-surface-variant text-sm">© 2024 Climate Cardinals KNUST. All rights reserved.</div>
-</div>
-</footer>
+
 <script src="js/config.js"></script>
 <script src="js/api.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/site.js"></script>
 <script src="js/auth.js"></script>
-</body></html>
+<script src="js/chrome.js"></script>
+</body>
+</html>

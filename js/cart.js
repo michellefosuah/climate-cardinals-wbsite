@@ -1,32 +1,30 @@
 /**
- * Cart page: renders the localStorage cart (productId-aware) and keeps the
- * order summary totals in sync with the backend rules.
+ * Cart page: renders the localStorage cart (productId-aware) with backend-
+ * matching totals.
  */
 (function () {
   'use strict';
 
-  var PLACEHOLDER =
-    'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><rect width="100%" height="100%" fill="%23fff1eb"/></svg>';
+  var icon = window.CC_ICON || function () { return ''; };
 
-  function itemTemplate(item) {
+  function line(item) {
+    var img = item.imageUrl
+      ? '<img src="' + item.imageUrl + '" alt="' + item.name + '" onerror="this.style.display=\'none\'"/>'
+      : '';
     return (
-      '<div class="glass-card rounded-xl p-md flex flex-col sm:flex-row gap-md items-center">' +
-      '<div class="w-full sm:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">' +
-      '<img class="w-full h-full object-cover" src="' + (item.imageUrl || PLACEHOLDER) + '" alt="' + item.name + '"/>' +
-      '</div>' +
-      '<div class="flex-grow space-y-1 w-full">' +
-      '<div class="flex justify-between items-start">' +
-      '<div><h3 class="font-headline-md text-lg text-primary">' + item.name + '</h3>' +
-      '<p class="text-on-surface-variant font-body-md">Premium Item</p></div>' +
-      '<span class="font-bold text-primary">GHS ' + item.price + '</span>' +
-      '</div>' +
-      '<div class="flex items-center justify-between mt-4">' +
-      '<div class="flex items-center border border-outline-variant rounded-full p-1 bg-white/50">' +
-      '<button data-dec="' + item.productId + '" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-base">remove</span></button>' +
-      '<span class="px-4 font-bold text-primary">' + item.quantity + '</span>' +
-      '<button data-inc="' + item.productId + '" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-base">add</span></button>' +
-      '</div>' +
-      '<button data-remove="' + item.productId + '" class="flex items-center gap-1 text-error hover:bg-error/5 px-3 py-1 rounded-full transition-colors"><span class="material-symbols-outlined text-sm">delete</span><span class="text-xs font-bold uppercase tracking-wider">Remove</span></button>' +
+      '<div class="cc-card cc-line">' +
+      '<div class="cc-line__img">' + img + '</div>' +
+      '<div class="cc-line__body">' +
+      '<div style="display:flex;justify-content:space-between;gap:12px">' +
+      '<div><h3 style="font-family:var(--font-head);font-weight:700;color:var(--forest-800)">' + item.name + '</h3>' +
+      '<p class="cc-muted" style="font-size:.85rem">Premium item</p></div>' +
+      '<b class="cc-product__price">GHS ' + item.price + '</b></div>' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">' +
+      '<div class="cc-qty">' +
+      '<button data-dec="' + item.productId + '" aria-label="Decrease">' + icon('minus', { size: 18 }) + '</button>' +
+      '<span>' + item.quantity + '</span>' +
+      '<button data-inc="' + item.productId + '" aria-label="Increase">' + icon('plus', { size: 18 }) + '</button></div>' +
+      '<button class="cc-link-danger" data-remove="' + item.productId + '">' + icon('trash', { size: 16 }) + ' Remove</button>' +
       '</div></div></div>'
     );
   }
@@ -34,35 +32,29 @@
   function render() {
     var Cart = window.CC_API.Cart;
     var items = Cart.all();
-    var container = document.getElementById('cart-items');
-    if (!container) return;
+    var box = document.getElementById('cart-items');
+    if (!box) return;
 
     if (!items.length) {
-      container.innerHTML =
-        '<p class="text-center text-on-surface-variant py-lg">Your cart is empty. <a href="shop.html" class="text-primary font-bold hover:underline">Continue shopping</a></p>';
+      box.innerHTML = '<div class="cc-card" style="padding:40px;text-align:center;color:var(--ink-soft)">Your cart is empty. <a href="shop.html" style="color:var(--primary);font-weight:700">Continue shopping →</a></div>';
     } else {
-      container.innerHTML = items.map(itemTemplate).join('');
-      container.querySelectorAll('[data-inc]').forEach(function (b) {
+      box.innerHTML = items.map(line).join('');
+      box.querySelectorAll('[data-inc]').forEach(function (b) {
         b.addEventListener('click', function () {
           var id = b.getAttribute('data-inc');
           var it = Cart.all().find(function (x) { return x.productId === id; });
-          Cart.setQuantity(id, (it ? it.quantity : 0) + 1);
-          refresh();
+          Cart.setQuantity(id, (it ? it.quantity : 0) + 1); refresh();
         });
       });
-      container.querySelectorAll('[data-dec]').forEach(function (b) {
+      box.querySelectorAll('[data-dec]').forEach(function (b) {
         b.addEventListener('click', function () {
           var id = b.getAttribute('data-dec');
           var it = Cart.all().find(function (x) { return x.productId === id; });
-          Cart.setQuantity(id, (it ? it.quantity : 0) - 1);
-          refresh();
+          Cart.setQuantity(id, (it ? it.quantity : 0) - 1); refresh();
         });
       });
-      container.querySelectorAll('[data-remove]').forEach(function (b) {
-        b.addEventListener('click', function () {
-          Cart.remove(b.getAttribute('data-remove'));
-          refresh();
-        });
+      box.querySelectorAll('[data-remove]').forEach(function (b) {
+        b.addEventListener('click', function () { Cart.remove(b.getAttribute('data-remove')); refresh(); });
       });
     }
     updateTotals();
@@ -70,21 +62,11 @@
 
   function updateTotals() {
     var t = window.CC_API.Cart.totals();
-    setText('subtotal', t.subtotal);
-    setText('shipping', t.shipping);
-    setText('tax', t.tax);
-    setText('total', t.total);
+    set('subtotal', t.subtotal); set('shipping', t.shipping); set('tax', t.tax); set('total', t.total);
   }
+  function set(id, v) { var e = document.getElementById(id); if (e) e.textContent = 'GHS ' + Number(v).toFixed(2); }
 
-  function setText(id, val) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = 'GHS ' + Number(val).toFixed(2);
-  }
-
-  function refresh() {
-    render();
-    if (window.CC_UI) window.CC_UI.updateCartBadge();
-  }
+  function refresh() { render(); if (window.CC_UI) window.CC_UI.updateCartBadge(); }
 
   document.addEventListener('DOMContentLoaded', render);
 })();
