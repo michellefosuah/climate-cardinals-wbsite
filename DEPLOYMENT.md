@@ -21,6 +21,10 @@ There are two pieces:
 1. **Push this repo to GitHub** (already done for the working branch). Make sure
    `render.yaml` is in the repo root.
 2. In Render, click **New → Blueprint**.
+   > ⚠️ Use **Blueprint**, not "Web Service". The Blueprint reads `render.yaml`
+   > and deploys with Render's Node runtime. Creating a plain Web Service can make
+   > Render attempt a Docker build and fail with
+   > `failed to read dockerfile: no such file or directory`.
 3. Choose this repository. Render reads `render.yaml` and shows a plan:
    - a **PostgreSQL** database (`climate-cardinals-db`), and
    - a **web service** (`climate-cardinals-api`).
@@ -115,14 +119,14 @@ localhost, so it just works.
 
 ---
 
-## Alternative host: Docker
+## Other hosts (Railway, Fly.io, …)
 
-`backend/Dockerfile` builds a self-contained API image (for Railway, Fly.io, or
-any container host). Provide a `DATABASE_URL` and `JWT_SECRET`; the container runs
-migrations + seed on boot. Example:
+The API is a standard Node + Prisma service, so any Node host works. Use:
 
-```bash
-cd backend
-docker build -t climate-cardinals-api .
-docker run -p 4000:4000 -e DATABASE_URL=... -e JWT_SECRET=... climate-cardinals-api
-```
+- **Build:** `npm install && npx prisma generate`
+- **Start:** `npx prisma migrate deploy && node prisma/seed.js && npm start`
+- **Env:** `DATABASE_URL`, `JWT_SECRET` (16+ chars), `NODE_ENV=production`,
+  `CORS_ORIGINS`.
+
+(No Dockerfile is shipped, so hosts won't accidentally pick a Docker build — ask
+if you'd like a container setup for a specific platform.)
