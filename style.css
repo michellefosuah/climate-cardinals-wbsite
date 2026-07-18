@@ -180,6 +180,7 @@ body::before {
 .cc-hero__media { position: relative; }
 .cc-hero__art { position: relative; aspect-ratio: 1; border-radius: var(--r-xl); overflow: hidden; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1.5px solid var(--glass-border); box-shadow: var(--shadow-lg); display: grid; place-items: center; padding: 8%; }
 .cc-hero__art img, .cc-hero__art svg { width: 100%; height: 100%; object-fit: contain; }
+.cc-hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
 .cc-hero__blob { position: absolute; border-radius: 50%; filter: blur(60px); z-index: 1; }
 .cc-hero__blob--1 { width: 380px; height: 380px; background: var(--sky); opacity: 0.4; top: -120px; right: -90px; }
 .cc-hero__blob--2 { width: 320px; height: 320px; background: var(--red); opacity: 0.16; bottom: -130px; left: -100px; }
