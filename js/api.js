@@ -280,6 +280,30 @@
         return { data: fallback('impact').slice(), demo: true };
       }
     },
+
+    // ---- Admin CRUD (require an ADMIN token; never fall back to demo) ----
+    Admin: {
+      // Products
+      listProducts: function () { return request('/products?includeInactive=true&limit=100'); },
+      createProduct: function (body) { return request('/products', { method: 'POST', body: body }); },
+      updateProduct: function (id, body) { return request('/products/' + encodeURIComponent(id), { method: 'PATCH', body: body }); },
+      deleteProduct: function (id) { return request('/products/' + encodeURIComponent(id), { method: 'DELETE' }); },
+      // Events
+      listEvents: function () { return request('/events?limit=100'); },
+      createEvent: function (body) { return request('/events', { method: 'POST', body: body }); },
+      updateEvent: function (id, body) { return request('/events/' + encodeURIComponent(id), { method: 'PATCH', body: body }); },
+      deleteEvent: function (id) { return request('/events/' + encodeURIComponent(id), { method: 'DELETE' }); },
+      // Team
+      listTeam: function () { return request('/team?includeInactive=true'); },
+      createTeam: function (body) { return request('/team', { method: 'POST', body: body }); },
+      updateTeam: function (id, body) { return request('/team/' + encodeURIComponent(id), { method: 'PATCH', body: body }); },
+      deleteTeam: function (id) { return request('/team/' + encodeURIComponent(id), { method: 'DELETE' }); },
+      // Impact
+      listImpact: function () { return request('/impact'); },
+      createImpact: function (body) { return request('/impact', { method: 'POST', body: body }); },
+      updateImpact: function (id, body) { return request('/impact/' + encodeURIComponent(id), { method: 'PATCH', body: body }); },
+      deleteImpact: function (id) { return request('/impact/' + encodeURIComponent(id), { method: 'DELETE' }); },
+    },
   };
 
   // Return bundled fallback content and flag demo mode (used when the API is
