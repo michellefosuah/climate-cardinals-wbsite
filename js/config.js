@@ -5,13 +5,30 @@
 (function () {
   'use strict';
 
-  // API base URL. Override at runtime with:
-  //   localStorage.setItem('cc_api_base', 'https://api.yourdomain.com/api')
+  // ----------------------------------------------------------------------
+  // API location
+  // ----------------------------------------------------------------------
+  // After deploying the backend (see DEPLOYMENT.md), paste its base URL here,
+  // e.g. 'https://climate-cardinals-api.onrender.com/api'
+  var PROD_API_BASE = '';
+
+  // Resolution order:
+  //   1. a runtime override in localStorage ('cc_api_base')
+  //   2. localhost when developing on your own machine
+  //   3. PROD_API_BASE above, if you filled it in
+  //   4. same origin + '/api' (works if one host serves both site and API)
   var stored =
     typeof localStorage !== 'undefined' && localStorage.getItem('cc_api_base');
+  var host = typeof location !== 'undefined' ? location.hostname : '';
+  var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '';
+  var resolvedBase =
+    stored ||
+    (isLocal
+      ? 'http://localhost:4000/api'
+      : PROD_API_BASE || (location.origin + '/api'));
 
   window.CC_CONFIG = {
-    apiBase: stored || 'http://localhost:4000/api',
+    apiBase: resolvedBase,
 
     // Organisation contact
     email: 'climatecardinalsknust@gmail.com',
