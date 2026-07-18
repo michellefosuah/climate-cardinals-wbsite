@@ -13,14 +13,31 @@
     { name: 'Climate Justice Pack', slug: 'climate-justice-pack', description: 'Waterproof vinyl stickers to deck out your laptop and bottles.', price: 45, category: 'STICKERS', badge: null, stock: 200 },
     { name: 'Earth First Mug', slug: 'earth-first-mug', description: 'Hand-finished ceramic mug, perfect for your morning brew.', price: 60, category: 'DRINKWARE', badge: 'Limited Edition', stock: 40 },
     { name: 'Stainless Hydrator', slug: 'stainless-hydrator', description: 'Double-walled insulated stainless steel bottle that keeps drinks cold all day.', price: 120, category: 'DRINKWARE', badge: null, stock: 35 },
-  ].map(function (p) { return Object.assign({ id: p.slug, imageUrl: 'images/merch/' + p.slug + '.svg', isActive: true }, p); });
+  ].map(function (p) {
+    var photos = {
+      'rooted-tee': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
+      'cardinal-tote-bag': 'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=800&q=80',
+      'climate-justice-pack': 'https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=800&q=80',
+      'earth-first-mug': 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80',
+      'stainless-hydrator': 'https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=800&q=80',
+    };
+    return Object.assign({ id: p.slug, imageUrl: photos[p.slug] || ('images/merch/' + p.slug + '.svg'), isActive: true }, p);
+  });
 
   var events = [
     { title: 'Tree Planting Workshop', slug: 'tree-planting-workshop', category: 'WORKSHOP', location: 'KNUST Botanical Gardens', startTime: '2026-10-20T09:00:00Z', endTime: '2026-10-20T12:00:00Z', capacity: 60, description: 'Join us for a hands-on session on native species restoration. Learn about the diverse ecosystems within our campus and help us plant over 50 saplings to increase local canopy cover.' },
     { title: 'Climate Advocacy Seminar', slug: 'climate-advocacy-seminar', category: 'SEMINAR', location: 'KNUST Main Auditorium', startTime: '2026-11-05T14:00:00Z', endTime: '2026-11-05T16:30:00Z', capacity: 200, description: 'Learn how to effectively communicate climate science to local policymakers and influence community-level environmental decisions. This seminar features guest speakers from environmental NGOs.' },
     { title: 'Youth Climate Meeting', slug: 'youth-climate-meeting', category: 'MEETING', location: 'Student Union Building', startTime: '2026-11-12T17:00:00Z', endTime: '2026-11-12T18:30:00Z', capacity: 40, description: "Strategy session for our upcoming local language translation drive. We'll be discussing how to translate key climate terminology into Twi and other local languages for wider accessibility." },
     { title: 'Bio-Diversity Nature Walk', slug: 'bio-diversity-nature-walk', category: 'NATURE_WALK', location: 'Wewe River Trail', startTime: '2026-12-01T07:30:00Z', endTime: '2026-12-01T10:00:00Z', capacity: 30, description: 'A guided educational walk exploring local flora and fauna along the Wewe River. Perfect for biology enthusiasts and anyone looking to reconnect with the natural beauty of our campus.' },
-  ].map(function (e) { return Object.assign({ id: e.slug, imageUrl: 'images/events/' + e.slug + '.svg', isPublished: true, registrationCount: 0 }, e); });
+  ].map(function (e) {
+    var photos = {
+      'tree-planting-workshop': 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=900&q=80',
+      'climate-advocacy-seminar': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80',
+      'youth-climate-meeting': 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
+      'bio-diversity-nature-walk': 'https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?auto=format&fit=crop&w=900&q=80',
+    };
+    return Object.assign({ id: e.slug, imageUrl: photos[e.slug] || ('images/events/' + e.slug + '.svg'), isPublished: true, registrationCount: 0 }, e);
+  });
 
   var team = [
     { name: 'Dr. Edmund Yamba', role: 'Patron', tier: 'LEADERSHIP', imageUrl: 'images/patron.jpeg' },
